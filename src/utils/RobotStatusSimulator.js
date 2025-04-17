@@ -2,7 +2,7 @@ const robotsCount = 10
 const robotErrors = [
   { code: "A7051", message: "", subMessage: "" },      // Servo power down
   { code: "E4010", message: "", subMessage: "" },      // Safety holder working
-  { code: "E3010", message: "", subMessage: "G5" },    // Please turn on Servo(**) **is Axis name.
+  { code: "E3100", message: "", subMessage: "G5" },    // Please turn on Servo(**) **is Axis name.
   { code: "E7001", message: "", subMessage: "FA" },    // Collision detected (FA) 
   { code: "E1900", message: "", subMessage: "" },      // HOLD user defined message
   { code: "E1050", message: "", subMessage: "" },      // Position does not match

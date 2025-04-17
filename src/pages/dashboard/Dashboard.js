@@ -12,11 +12,10 @@ const Dashboard = () => {
     setRobots([...robotArray]);
 
     const interval = setInterval(() => {
-      // Tady vytvoříme novou kopii pro vynucení renderu
       setRobots([...robotArray]);
     }, 1000);
 
-    return () => clearInterval(interval); // Vyčištění po unmountu
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -37,6 +36,7 @@ const Dashboard = () => {
             error={robot.error}
             program={robot.program}
             point={robot.point}
+            robotError={robot.robotError}
           />
         )}
       </div>
