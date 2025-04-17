@@ -1,0 +1,8 @@
+.navbar {
+    z-index: 1030;
+    background-color: rgb(24, 24, 24);
+  }
+  
+  .navbar-brand {
+    width: 200px;
+  }

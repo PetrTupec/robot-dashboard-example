@@ -1,0 +1,10 @@
+.server-status-dot {
+    width: 0.8rem;
+    height: 0.8rem;
+    border:grey 1px solid;
+    border-radius: 100%;
+}
+
+.server-status-run{
+    background-color: lightgreen;
+}

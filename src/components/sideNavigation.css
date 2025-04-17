@@ -1,0 +1,40 @@
+.sidenav {
+    z-index: 1020;
+    width: 200px;
+    background-color: rgb(24, 24, 24);
+}
+
+.sidenav-menu-header {
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-bottom: 1rem;
+    margin-top: 56px;
+    border-top: rgb(33, 37, 41) solid 1px;
+}
+
+.sidenav-menu-footer {
+    box-sizing: border-box;
+    padding: 0.75rem;
+    border-right: rgb(24, 24, 24) solid 1px;
+}
+
+.nav-link:hover {
+    color: aliceblue !important
+}
+
+#sidenav>* .nav-link:hover {
+    margin-left: 5px;
+}
+
+@media (max-width: 768px) {
+    .sidenav-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+}

@@ -1,0 +1,39 @@
+.led-robot {
+    width: 30px;
+    height: 14px;
+    border: var(--bs-border-color) 1px solid;
+    border-radius: 8px;
+}
+
+/* GREEN */
+.led-green.on {
+    background-color: #00ff00;
+    box-shadow: 0 0 5px #00ff00;
+}
+
+.led-green.off {
+    background-color: #338033;
+    box-shadow: none;
+}
+
+/* YELLOW */
+.led-yellow.on {
+    background-color: #ffff00;
+    box-shadow: 0 0 5px #ffff00;
+}
+
+.led-yellow.off {
+    background-color: #7f7f2e;
+    box-shadow: none;
+}
+
+/* RED */
+.led-red.on {
+    background-color: #ff0000;
+    box-shadow: 0 0 5px #ff0000;
+}
+
+.led-red.off {
+    background-color: #7f3333;
+    box-shadow: none;
+}
