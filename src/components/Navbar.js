@@ -9,7 +9,7 @@ const Navbar = ({ onClickToggle }) => {
     return (
         <nav className="navbar navbar-expand position-fixed w-100">
             <Link to={"/"} className="navbar-brand text-center text-white">
-                PRobotGuide
+                Dashboard exmaple
             </Link>
             <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
 

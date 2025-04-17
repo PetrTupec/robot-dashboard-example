@@ -1,19 +1,36 @@
 import "./workplaceCard.css"
 import robotIcon from "../assets/icon_robot.png"
 import StatusLedRobot from "./StatusLedRobot"
+import { findError } from "../utils/ErrorManager"
 
-const WorkplaceCard = ({ robotName, status, running, hold, error, program, point, robotError }) => {
+const WorkplaceCard = ({ robotName, status, running, hold, error, program, point, robotError, setModalDialog }) => {
+    const errorData = findError(robotError.code)
+
+    const handleOnClickInfo = () => {
+        const title = errorData.id + " - " + errorData.message.en
+        const message = 
+        "Message:\n" + errorData.message.en + "\n\n" + 
+        "Cause:\n" + errorData.cause.en + "\n\n" + 
+        "Solution:\n" + errorData.solution.en
+                    
+        setModalDialog({
+            show: true,
+            title: title,
+            message: message
+        })
+    }
+
     return (
         <div>
-            <div className={`workplace-card ${error ? "red-blinking-shadow" : ""} g-0`}>
+            <div className={`workplace-card ${error ? "red-blinking-shadow" : ""}`}>
                 <div className={`workplace-card-header ${error ? "workplace-card-header-error-bg" : "workplace-card-header-bg"}`} >
                     <strong>Stanice 1  | </strong><span>Robot {robotName}</span>
                 </div>
-                <div className="workplace-card-body p-2 small">
-                    <div className="row d-flex mb-1 small">
+                <div className="workplace-card-body p-2">
+                    <div className="row d-flex mb-1">
                         <div className="col d-flex flex-row align-items-center">
-                            <img src={robotIcon} alt="robot-icon" /> <span>{status ? "ONLINE" : "OFFLINE"}</span>
-                            <div className="ms-auto small">
+                            <img src={robotIcon} alt="robot-icon" /> <span className="small">{status ? "ONLINE" : "OFFLINE"}</span>
+                            <div className="ms-auto text-small">
                                 <StatusLedRobot
                                     text={"Running"}
                                     color={"green"}
@@ -29,18 +46,23 @@ const WorkplaceCard = ({ robotName, status, running, hold, error, program, point
                             </div>
                         </div>
                     </div>
-                    <div className="row small">
-                        <span className="col small">Program</span>
-                        <span className="col-auto small ms-auto">Point</span>
+                    <div className="row text-small">
+                        <span className="col">Program</span>
+                        <span className="col-auto ms-auto">Point</span>
                     </div>
-                    <div className="row small">
-                        <i className="col small">{program}</i>
-                        <i className="col-auto small ms-auto">P{point}</i>
+                    <div className="row text-small">
+                        <i className="col">{program}</i>
+                        <i className="col-auto ms-auto">P{point}</i>
                     </div>
                 </div>
                 {error > 0 &&
-                    <div className="workplace-card-footer d-flex small p-2">
-                        <div>{robotError.code} -</div> <button className="ms-auto border-0 bg-warning icon-question d-flex align-items-center justify-content-center"><span className="text-dark">?</span></button>
+                    <div className="workplace-card-footer d-flex p-2 text-small">
+                        <div>{robotError.code} - {errorData ? errorData.message.en : "Error not find"}</div>
+                        <button
+                            className="ms-auto border-0 bg-warning icon-question d-flex align-items-center justify-content-center"
+                            onClick={handleOnClickInfo}>
+                            <span className="text-dark">?</span>
+                        </button>
                     </div>}
             </div>
         </div>

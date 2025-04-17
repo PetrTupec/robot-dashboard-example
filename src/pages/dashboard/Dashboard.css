@@ -1,4 +1,4 @@
-.server-status-dot {
+.server-status-led {
     width: 0.8rem;
     height: 0.8rem;
     border:grey 1px solid;
@@ -6,5 +6,5 @@
 }
 
 .server-status-run{
-    background-color: lightgreen;
+    background-color: rgb(70, 214, 70);
 }
