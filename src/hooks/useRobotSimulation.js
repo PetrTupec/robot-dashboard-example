@@ -12,7 +12,6 @@ export const useRobotSimulation = () => {
         { code: "W5050", message: "", subMessage: "" }       // Example of unknown error
     ]
     const robotsCount = 10
-    const [robots, setRobots] = useState([])
     const isRunningRef = useRef(true)
 
     const createRobots = () => {
@@ -37,6 +36,8 @@ export const useRobotSimulation = () => {
 
         return robotArray
     }
+
+    const [robots, setRobots] = useState([])
 
     const setRobotStatus = (robot, program, point, hold, error) => {
         const robotError = error

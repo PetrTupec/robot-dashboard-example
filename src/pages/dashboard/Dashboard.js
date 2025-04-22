@@ -1,10 +1,12 @@
 import Header from "../../components/Header"
 import ModalDialog from "../../components/ModalDialog"
-import { useEffect, useState } from "react"
 import WorkplaceCard from "../../components/workplaceCard/WorkplaceCard"
 import WorkplaceCardOld from "../../components/workplaceCard/WorkplaceCardOld"
-import "./Dashboard.css"
+import { useEffect, useState } from "react"
 import { useRobotSimulation } from "../../hooks/useRobotSimulation"
+import "./Dashboard.css"
+import ServerStatusHeader from "../../components/ServerStatusHeader"
+import ToolButtons from "../../components/ToolButtons"
 
 const Dashboard = () => {
   const initialStateModalDialog = { show: false, title: "", message: "" }
@@ -15,15 +17,15 @@ const Dashboard = () => {
   const { robots, isRunningRef } = useRobotSimulation()
 
   useEffect(() => {
-    const body = document.body;
+    const body = document.body
 
     if (isOldView) {
-      body.setAttribute("data-bs-theme", "light");
+      body.setAttribute("data-bs-theme", "light")
     } else {
-      const userPref = localStorage.getItem("theme") || "auto";
-      body.setAttribute("data-bs-theme", userPref);
+      const userPref = localStorage.getItem("theme") || "auto"
+      body.setAttribute("data-bs-theme", userPref)
     }
-  }, [isOldView]);
+  }, [isOldView])
 
   const handleClickPauseSimulation = () => {
     isRunningRef.current = !isRunningRef.current
@@ -42,40 +44,16 @@ const Dashboard = () => {
         onCloseText={"Close"}
         title={modalDialog.title}
         message={modalDialog.message}
-      />  
+      />
       <Header title={"Dashboard"} />
-      {/* Tool buttons */}
-      <div className="tool-buttons">
-        <div className="btn-group shadow">
-          <button
-            className="btn btn-warning"
-            onClick={handleClickChangeView}>
-            <i className="fas fa-rotate"></i>
-          </button>
-          <button
-            className="btn btn-warning"
-            onClick={handleClickPauseSimulation}>
-            <i className={isRunning ? "fas fa-pause" : "fas fa-play"}></i>
-          </button>
-        </div>
-      </div>
-      {/* Server status */}
-      <div className="row">
-        <div className="col mb-2">
-          {isOldView ?
-            <div className="d-flex flex-row align-items-center gap-2 workplace-card-header workplace-card-header-bg-old py-1 border-bottom mb-4">
-              <div>Server</div>
-              <span className="ms-auto">Status</span>
-              <div className="server-status-led led-green on"></div>
-            </div>
-            :
-            <div className="d-flex flex-row align-items-center gap-2">
-              <div>Server status</div>
-              <div className="server-status-led led-green on"></div>
-            </div>}
-        </div>
-      </div>
-      {/* Workplace dashboard */}
+      <ToolButtons
+        isRunning={isRunning}
+        onClickChangeView={handleClickChangeView}
+        onClickPauseSimulation={handleClickPauseSimulation}
+      />
+      <ServerStatusHeader
+        isOldView={isOldView}
+      />
       <div className={`d-flex flex-row flex-wrap gap-3 ${isOldView ? "" : "justify-content-center"}`}>
         {robots.map((robot, key) =>
           <WorkplaceCardComponent
