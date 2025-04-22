@@ -24,12 +24,12 @@ const WorkplaceCard = ({ robotName, status, running, hold, error, program, point
         <div className={`workplace-card-container ${error ? "red-blinking-shadow" : ""}`}>
             <div className="workplace-card">
                 <div className={`workplace-card-header workplace-card-header${error ? "-error-bg" : "-bg"}`} >
-                    <strong>Stanice 1  | </strong><span>Robot {robotName}</span>
+                    <strong>Robot {robotName}</strong>
                 </div>
                 <div className="workplace-card-body p-2">
                     <div className="row d-flex mb-1">
                         <div className="col d-flex flex-row align-items-center">
-                            <img src={robotIcon} alt="robot-icon" /> <span className="small">{status ? "ONLINE" : "OFFLINE"}</span>
+                            <img src={robotIcon} alt="robot-icon" /> <i className="small">{status ? "ONLINE" : "OFFLINE"}</i>
                             <div className="ms-auto text-small">
                                 <StatusLedRobot
                                     isOld={false}

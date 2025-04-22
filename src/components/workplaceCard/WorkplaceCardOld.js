@@ -8,7 +8,7 @@ const WorkplaceCard = ({ robotName, status, running, hold, error, program, point
         <div>
             <div className="workplace-card-old">
                 <div className="workplace-card-header-old workplace-card-header-bg-old">
-                    <span>Stanice 1 Robot {robotName}</span>
+                    <span>Robot {robotName}</span>
                 </div>
                 <div className="workplace-card-body">
                     <div className="row d-flex border-bottom p-2">

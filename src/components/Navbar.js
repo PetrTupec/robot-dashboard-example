@@ -10,11 +10,11 @@ const Navbar = ({ onClickToggle }) => {
             <Link to={"/"} className="navbar-brand text-center text-white">
                 Dashboard exmaple
             </Link>
-            <button id="toggle" className="btn text-light ms-auto" onClick={toggleTheme}>
+            <button className="btn text-light ms-auto" onClick={toggleTheme}>
                 <i className={`text-warning fas fa-${theme === "light" ? "moon" : "sun"}`}></i>
             </button>
             <div className="d-md-none">
-                <button className="nav-link btn me-4 text-secondary" onClick={onClickToggle} id="sidebarToggle">
+                <button className="nav-link btn me-4 text-secondary" onClick={onClickToggle}>
                     <i className="fas fa-bars" />
                 </button>
             </div>
