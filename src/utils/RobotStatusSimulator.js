@@ -6,7 +6,8 @@ const robotErrors = [
   { code: "E7001", message: "", subMessage: "FA" },    // Collision detected (FA) 
   { code: "E1900", message: "", subMessage: "" },      // HOLD user defined message
   { code: "E1050", message: "", subMessage: "" },      // Position does not match
-  { code: "W1610", message: "", subMessage: "" }       // Wire feeder lock detected
+  { code: "W1610", message: "", subMessage: "" },      // Wire feeder lock detected
+  { code: "W5050", message: "", subMessage: "" }       // Example of unknown error code
 ]
 
 const createRobots = () => {

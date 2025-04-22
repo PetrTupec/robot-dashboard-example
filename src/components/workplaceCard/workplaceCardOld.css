@@ -1,0 +1,30 @@
+.workplace-card-old {
+    width: 320px;
+    border: lightgrey 1px solid;
+    overflow: hidden;
+    flex: 0 0 auto;
+}
+
+.workplace-card-header-old {
+    font-size: 1rem;
+    padding: 5px;
+}
+
+.workplace-card-header-bg-old {
+    /*Safari 5.1-6*/
+    background: -webkit-linear-gradient(to bottom, var(--bs-border-color), var(--bs-body-bg));
+    /*Opera 11.1-12*/
+    background: -o-linear-gradient(to bottom, var(--bs-border-color), var(--bs-body-bg));
+    /*Fx 3.6-15*/
+    background: -moz-linear-gradient(to bottom, var(--bs-border-color), var(--bs-body-bg));
+    /*Standard*/
+    background: rgb(236, 236, 236);
+}
+
+.workplace-card-body {
+    background-color: var(--bs-body-bg);
+}
+
+.text-small {
+    font-size: 0.7rem;
+}

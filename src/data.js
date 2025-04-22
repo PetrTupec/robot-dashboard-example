@@ -19,8 +19,8 @@ export const errors = [
         "id": "E3100"
     },
     {
-        "solution": { "en": "001:Remove cause of interference and restart.\n002:Execute warm-up operation." },
-        "cause": { "en": "001:Collision is detected.\n002:If it occurs on the initial start-up operation of the day in cold climates, grease may not be warm enough." },
+        "solution": { "en": "001: Remove cause of interference and restart.\n002:Execute warm-up operation." },
+        "cause": { "en": "001: Collision is detected.\n002:If it occurs on the initial start-up operation of the day in cold climates, grease may not be warm enough." },
         "message": { "en": "Collision detected" },
         "id": "E7001"
     },

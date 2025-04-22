@@ -1,18 +1,18 @@
+import robotIcon from "../../assets/icon_robot.png"
+import StatusLedRobot from "../StatusLedRobot"
+import { findError } from "../../utils/ErrorManager"
 import "./workplaceCard.css"
-import robotIcon from "../assets/icon_robot.png"
-import StatusLedRobot from "./StatusLedRobot"
-import { findError } from "../utils/ErrorManager"
 
 const WorkplaceCard = ({ robotName, status, running, hold, error, program, point, robotError, setModalDialog }) => {
     const errorData = findError(robotError.code)
 
     const handleOnClickInfo = () => {
         const title = errorData.id + " - " + errorData.message.en
-        const message = 
-        "Message:\n" + errorData.message.en + "\n\n" + 
-        "Cause:\n" + errorData.cause.en + "\n\n" + 
-        "Solution:\n" + errorData.solution.en
-                    
+        const message =
+            "Message:\n" + errorData.message.en + "\n\n" +
+            "Cause:\n" + errorData.cause.en + "\n\n" +
+            "Solution:\n" + errorData.solution.en
+
         setModalDialog({
             show: true,
             title: title,
@@ -21,9 +21,9 @@ const WorkplaceCard = ({ robotName, status, running, hold, error, program, point
     }
 
     return (
-        <div>
-            <div className={`workplace-card ${error ? "red-blinking-shadow" : ""}`}>
-                <div className={`workplace-card-header ${error ? "workplace-card-header-error-bg" : "workplace-card-header-bg"}`} >
+        <div className={`workplace-card-container ${error ? "red-blinking-shadow" : ""}`}>
+            <div className="workplace-card">
+                <div className={`workplace-card-header workplace-card-header${error ? "-error-bg" : "-bg"}`} >
                     <strong>Stanice 1  | </strong><span>Robot {robotName}</span>
                 </div>
                 <div className="workplace-card-body p-2">
@@ -32,14 +32,17 @@ const WorkplaceCard = ({ robotName, status, running, hold, error, program, point
                             <img src={robotIcon} alt="robot-icon" /> <span className="small">{status ? "ONLINE" : "OFFLINE"}</span>
                             <div className="ms-auto text-small">
                                 <StatusLedRobot
+                                    isOld={false}
                                     text={"Running"}
                                     color={"green"}
                                     isOn={running} />
                                 <StatusLedRobot
+                                    isOld={false}
                                     text={"Hold"}
                                     color={"yellow"}
                                     isOn={hold} />
                                 <StatusLedRobot
+                                    isOld={false}
                                     text={"Error"}
                                     color={"red"}
                                     isOn={error} />
@@ -55,16 +58,16 @@ const WorkplaceCard = ({ robotName, status, running, hold, error, program, point
                         <i className="col-auto ms-auto">P{point}</i>
                     </div>
                 </div>
-                {error > 0 &&
-                    <div className="workplace-card-footer d-flex p-2 text-small">
-                        <div>{robotError.code} - {errorData ? errorData.message.en : "Error not find"}</div>
-                        <button
-                            className="ms-auto border-0 bg-warning icon-question d-flex align-items-center justify-content-center"
-                            onClick={handleOnClickInfo}>
-                            <span className="text-dark">?</span>
-                        </button>
-                    </div>}
             </div>
+            {error > 0 &&
+                <div className="workplace-card-footer-bg d-flex p-2 text-small">
+                    <div>{robotError.code} - {errorData ? errorData.message.en : "Error not find"}</div>
+                    <button
+                        className="ms-auto border-0 bg-warning icon-question d-flex align-items-center justify-content-center"
+                        onClick={handleOnClickInfo}>
+                        <span className="text-dark">?</span>
+                    </button>
+                </div>}
         </div>
     )
 }

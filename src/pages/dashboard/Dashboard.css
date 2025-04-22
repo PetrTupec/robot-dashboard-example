@@ -1,10 +1,16 @@
 .server-status-led {
     width: 0.8rem;
     height: 0.8rem;
-    border:grey 1px solid;
+    border: grey 1px solid;
     border-radius: 100%;
 }
 
-.server-status-run{
+.server-status-run {
     background-color: rgb(70, 214, 70);
+}
+
+.tool-buttons {
+    position: fixed;
+    top: 74px;
+    right: 24px;
 }
