@@ -10,7 +10,10 @@ const Footer = () => {
                 <div className="d-flex align-items-center justify-content-between small">
                     <div className="text-secondary">Vytvořil Petr Tupec {currentYear}</div>
                     <div>
-                        <Link to={"/#"} className="nav-link text-secondary">
+                        <Link
+                            to={"/#"}
+                            className="nav-link text-secondary"
+                        >
                             O projektu
                         </Link>
                     </div>

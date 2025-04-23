@@ -5,7 +5,7 @@ import WorkplaceCardOld from "../../components/workplaceCard/WorkplaceCardOld"
 import DashboardHeader from "../../components/DashboardHeader"
 import ToolButtons from "../../components/ToolButtons"
 import Counter from "../../components/Counter"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useRobotSimulation } from "../../hooks/useRobotSimulation"
 import "./Dashboard.css"
 
@@ -15,24 +15,19 @@ const Dashboard = () => {
   const [isRunning, setIsRunning] = useState(true)
   const [isOldView, setIsOldView] = useState(false)
   const [robotsCount, setRobotsCount] = useState(10)
-  const [robotErrorCount, setRobotErrorCount] = useState(0)
+  const [errorIndex, setErrorIndex] = useState(0)
+  const [errorRobots, setErrorRobots] = useState([])
   const { robots, isRunningRef } = useRobotSimulation(robotsCount)
   const WorkplaceCardComponent = isOldView ? WorkplaceCardOld : WorkplaceCard
+  const refs = useRef({})
 
-  useEffect(() => {
-    const body = document.body
+  const scrollToRobot = () => {
+    if (errorRobots.length === 0) return
 
-    if (isOldView) {
-      body.setAttribute("data-bs-theme", "light")
-    } else {
-      const userPref = localStorage.getItem("theme") || "auto"
-      body.setAttribute("data-bs-theme", userPref)
-    }
-  }, [isOldView])
-
-  useEffect(() => {
-    setRobotErrorCount(robots.filter(robot => robot.error === 1).length)
-  }, [robots])
+    const nextRobot = errorRobots[errorIndex % errorRobots.length]
+    refs.current[nextRobot.id]?.scrollIntoView({ behavior: "smooth", block: "center" })
+    setErrorIndex((prev) => (prev + 1) % errorRobots.length)
+  }
 
   const handleClickPauseSimulation = () => {
     isRunningRef.current = !isRunningRef.current
@@ -46,6 +41,21 @@ const Dashboard = () => {
   const handleOnCloseModalDialog = () => {
     setModalDialog({ initialStateModalDialog })
   }
+
+  useEffect(() => {
+    const body = document.body
+
+    if (isOldView) {
+      body.setAttribute("data-bs-theme", "light")
+    } else {
+      const userPref = localStorage.getItem("theme") || "auto"
+      body.setAttribute("data-bs-theme", userPref)
+    }
+  }, [isOldView])
+
+  useEffect(() => {
+    setErrorRobots(robots.filter(robot => robot.error === 1))
+  }, [robots])
 
   return (
     <>
@@ -76,13 +86,15 @@ const Dashboard = () => {
 
       <DashboardHeader
         isOldView={isOldView}
-        errorCount={robotErrorCount}
+        errorCount={errorRobots.length}
+        onClickErrorConter={scrollToRobot}
       />
 
       <div className={`d-flex flex-row flex-wrap gap-3 ${isOldView ? "" : "justify-content-center"}`}>
         {robots.map((robot) =>
           <WorkplaceCardComponent
             key={robot.id}
+            ref={(el) => (refs.current[robot.id] = el)}
             {...robot}
             setModalDialog={setModalDialog}
           />

@@ -1,6 +1,6 @@
 import "./dashboardHeader.css"
 
-const DashboardHeader = ({ isOldView, errorCount }) => {
+const DashboardHeader = ({ isOldView, errorCount, onClickErrorConter }) => {
     return (
         <div className="row">
             <div className="col mb-3">
@@ -12,10 +12,13 @@ const DashboardHeader = ({ isOldView, errorCount }) => {
                         <span className="ms-auto">Status</span>}
                     <div className="server-status-led led-green on"></div>
                     {(!isOldView && errorCount > 0) &&
-                        <div className="ms-auto bg-red px-3 text-white rounded-pill">
+                        <button
+                            className="btn btn-danger px-3 error-indicate-button shadow"
+                            onClick={onClickErrorConter}
+                        >
                             <i className="fas fa-triangle-exclamation"></i>
                             <span className="ms-2">{errorCount}</span>
-                        </div>
+                        </button>
                     }
                 </div>
             </div>

@@ -12,8 +12,12 @@ const SideNavigation = ({ isVisible }) => {
                 <div className="sidenav-menu-header text-secondary p-2">Main</div>
                 <ul className="nav nav-pills flex-column mb-auto p-2">
                     <li className="nav-item">
-                        <Link to={"/dashboard"} className="nav-link text-secondary">
-                            <i className="fas fa-th-large text-warning"></i><span className="ms-2">Dashboard</span>
+                        <Link
+                            to={"/dashboard"}
+                            className="nav-link text-secondary"
+                        >
+                            <i className="fas fa-th-large text-warning"></i>
+                            <span className="ms-2">Dashboard</span>
                         </Link>
                     </li>
                 </ul>

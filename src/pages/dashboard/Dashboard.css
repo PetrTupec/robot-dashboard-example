@@ -8,9 +8,3 @@
 .server-status-run {
     background-color: rgb(70, 214, 70);
 }
-
-.tool-buttons {
-    position: fixed;
-    top: 74px;
-    right: 24px;
-}

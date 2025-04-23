@@ -1,14 +1,19 @@
 import robotIcon from "../../assets/icon_robot.png"
 import StatusLedRobot from "../StatusLedRobot"
 import { findError } from "../../utils/ErrorManager"
+import { forwardRef } from "react"
 import "./workplaceCard.css"
 
-const WorkplaceCard = ({ id, status, running, hold, error, program, point, robotError, setModalDialog }) => {
+const WorkplaceCard = forwardRef(({ id, status, running, hold, error, program, point, robotError, setModalDialog }, ref) => {
     const errorData = findError(robotError.code)
     point = String(point).padStart(4, '0')
+    const errorMessage =
+        errorData.id === "E1900"
+            ? robotError.subMessage
+            : errorData.message.en + " " + robotError.subMessage
 
     const handleOnClickInfo = () => {
-        const title = errorData.id + " - " + errorData.message.en
+        const title = errorData.id + " - " + errorMessage
         const message =
             "Message:\n" + errorData.message.en + "\n\n" +
             "Cause:\n" + errorData.cause.en + "\n\n" +
@@ -22,7 +27,10 @@ const WorkplaceCard = ({ id, status, running, hold, error, program, point, robot
     }
 
     return (
-        <div className={`workplace-card-container ${error ? "red-blinking-shadow" : ""}`}>
+        <div
+            className={`workplace-card-container ${error ? "red-blinking-shadow" : ""}`}
+            ref={ref}
+        >
             <div className="workplace-card">
                 <div className={`workplace-card-header workplace-card-header${error ? "-error-bg" : "-bg"}`} >
                     <strong>Robot {id}</strong>
@@ -30,23 +38,30 @@ const WorkplaceCard = ({ id, status, running, hold, error, program, point, robot
                 <div className="workplace-card-body p-2">
                     <div className="row d-flex mb-1">
                         <div className="col d-flex flex-row align-items-center">
-                            <img src={robotIcon} alt="robot-icon" /> <i className="small">{status ? "ONLINE" : "OFFLINE"}</i>
+                            <img
+                                src={robotIcon}
+                                alt="robot-icon"
+                            />
+                            <i className="small">{status ? "ONLINE" : "OFFLINE"}</i>
                             <div className="ms-auto text-small">
                                 <StatusLedRobot
                                     isOld={false}
                                     text={"Running"}
                                     color={"green"}
-                                    isOn={running} />
+                                    isOn={running}
+                                />
                                 <StatusLedRobot
                                     isOld={false}
                                     text={"Hold"}
                                     color={"yellow"}
-                                    isOn={hold} />
+                                    isOn={hold}
+                                />
                                 <StatusLedRobot
                                     isOld={false}
                                     text={"Error"}
                                     color={"red"}
-                                    isOn={error} />
+                                    isOn={error}
+                                />
                             </div>
                         </div>
                     </div>
@@ -62,7 +77,7 @@ const WorkplaceCard = ({ id, status, running, hold, error, program, point, robot
             </div>
             {error > 0 &&
                 <div className="workplace-card-footer-bg d-flex p-2 text-small">
-                    <div>{robotError.code} - {errorData ? errorData.message.en : "Error not find"}</div>
+                    <div>{robotError.code} - {errorData ? errorMessage : "Error not find"}</div>
                     <button
                         className="ms-auto border-0 bg-warning icon-question d-flex align-items-center justify-content-center"
                         onClick={handleOnClickInfo}>
@@ -71,6 +86,6 @@ const WorkplaceCard = ({ id, status, running, hold, error, program, point, robot
                 </div>}
         </div>
     )
-}
+})
 
 export default WorkplaceCard

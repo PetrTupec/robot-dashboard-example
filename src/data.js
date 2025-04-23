@@ -15,7 +15,7 @@ export const errors = [
     {
         "solution": { "en": "Turn ON the target independent E-axis servo power, and then restart." },
         "cause": { "en": "The target independent E-axis servo power is OFF." },
-        "message": { "en": "Please turn on Servo(**) **is Axis name." },
+        "message": { "en": "Please turn on Servo" },
         "id": "E3100"
     },
     {
