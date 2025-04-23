@@ -1,4 +1,4 @@
-const ToolButtons = ({ isRunning, onClickChangeView, onClickPauseSimulation }) => {
+const ToolButtons = ({ isRunning, onClickChangeView, onClickPauseSimulation, aditionalButtons }) => {
     return (
         <div className="tool-buttons">
             <div className="btn-group shadow">
@@ -13,6 +13,10 @@ const ToolButtons = ({ isRunning, onClickChangeView, onClickPauseSimulation }) =
                     <i className={isRunning ? "fas fa-pause" : "fas fa-play"}></i>
                 </button>
             </div>
+            {aditionalButtons &&
+                <div className="btn-group shadow ms-2">
+                    {aditionalButtons}
+                </div>}
         </div>
     )
 }

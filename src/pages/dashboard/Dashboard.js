@@ -4,6 +4,7 @@ import WorkplaceCard from "../../components/workplaceCard/WorkplaceCard"
 import WorkplaceCardOld from "../../components/workplaceCard/WorkplaceCardOld"
 import ServerStatusHeader from "../../components/ServerStatusHeader"
 import ToolButtons from "../../components/ToolButtons"
+import Counter from "../../components/Counter"
 import { useEffect, useState } from "react"
 import { useRobotSimulation } from "../../hooks/useRobotSimulation"
 import "./Dashboard.css"
@@ -14,7 +15,8 @@ const Dashboard = () => {
   const [isRunning, setIsRunning] = useState(true)
   const [isOldView, setIsOldView] = useState(false)
   const WorkplaceCardComponent = isOldView ? WorkplaceCardOld : WorkplaceCard
-  const { robots, isRunningRef } = useRobotSimulation(20)
+  const [robotsCount, setRobotsCount] = useState(10)
+  const { robots, isRunningRef } = useRobotSimulation(robotsCount)
 
   useEffect(() => {
     const body = document.body
@@ -46,10 +48,19 @@ const Dashboard = () => {
         message={modalDialog.message}
       />
       <Header title={"Dashboard"} />
+
       <ToolButtons
         isRunning={isRunning}
         onClickChangeView={handleClickChangeView}
         onClickPauseSimulation={handleClickPauseSimulation}
+        aditionalButtons={
+          <Counter
+            min={1}
+            max={20}
+            value={robotsCount}
+            onChange={setRobotsCount}
+          />
+        }
       />
       <ServerStatusHeader
         isOldView={isOldView}

@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react"
 import { createRobots, setRobotStatus } from "../utils/RobotManager"
 
-export const useRobotSimulation = (robotsCount = 10) => {
+export const useRobotSimulation = (robotsCount) => {
     const isRunningRef = useRef(true)
-    const [robots, setRobots] = useState(createRobots(robotsCount))
+    const [robots, setRobots] = useState([])
 
     useEffect(() => {
+        setRobots(createRobots(robotsCount))
+
         const updateInterval = setInterval(() => {
             if (!isRunningRef.current) return
 
@@ -43,7 +45,7 @@ export const useRobotSimulation = (robotsCount = 10) => {
             clearInterval(updateInterval)
             clearInterval(errorInterval)
         }
-    }, [])
+    }, [robotsCount])
 
     return { robots, isRunningRef }
 }

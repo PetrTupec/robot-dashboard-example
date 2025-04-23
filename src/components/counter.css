@@ -1,0 +1,9 @@
+.value {
+    min-width: 20px;
+    color: black;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: 2px;
+}
