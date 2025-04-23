@@ -2,7 +2,7 @@ import Header from "../../components/Header"
 import ModalDialog from "../../components/ModalDialog"
 import WorkplaceCard from "../../components/workplaceCard/WorkplaceCard"
 import WorkplaceCardOld from "../../components/workplaceCard/WorkplaceCardOld"
-import ServerStatusHeader from "../../components/ServerStatusHeader"
+import DashboardHeader from "../../components/DashboardHeader"
 import ToolButtons from "../../components/ToolButtons"
 import Counter from "../../components/Counter"
 import { useEffect, useState } from "react"
@@ -14,9 +14,10 @@ const Dashboard = () => {
   const [modalDialog, setModalDialog] = useState(initialStateModalDialog)
   const [isRunning, setIsRunning] = useState(true)
   const [isOldView, setIsOldView] = useState(false)
-  const WorkplaceCardComponent = isOldView ? WorkplaceCardOld : WorkplaceCard
   const [robotsCount, setRobotsCount] = useState(10)
+  const [robotErrorCount, setRobotErrorCount] = useState(0)
   const { robots, isRunningRef } = useRobotSimulation(robotsCount)
+  const WorkplaceCardComponent = isOldView ? WorkplaceCardOld : WorkplaceCard
 
   useEffect(() => {
     const body = document.body
@@ -29,6 +30,10 @@ const Dashboard = () => {
     }
   }, [isOldView])
 
+  useEffect(() => {
+    setRobotErrorCount(robots.filter(robot => robot.error === 1).length)
+  }, [robots])
+
   const handleClickPauseSimulation = () => {
     isRunningRef.current = !isRunningRef.current
     setIsRunning(isRunningRef.current)
@@ -38,15 +43,21 @@ const Dashboard = () => {
     setIsOldView(!isOldView)
   }
 
+  const handleOnCloseModalDialog = () => {
+    setModalDialog({ initialStateModalDialog })
+  }
+
   return (
     <>
+
       <ModalDialog
         show={modalDialog.show}
-        onClose={() => setModalDialog({ initialStateModalDialog })}
+        onClose={handleOnCloseModalDialog}
         onCloseText={"Close"}
         title={modalDialog.title}
         message={modalDialog.message}
       />
+
       <Header title={"Dashboard"} />
 
       <ToolButtons
@@ -62,25 +73,22 @@ const Dashboard = () => {
           />
         }
       />
-      <ServerStatusHeader
+
+      <DashboardHeader
         isOldView={isOldView}
+        errorCount={robotErrorCount}
       />
+
       <div className={`d-flex flex-row flex-wrap gap-3 ${isOldView ? "" : "justify-content-center"}`}>
-        {robots.map((robot, key) =>
+        {robots.map((robot) =>
           <WorkplaceCardComponent
-            key={key}
-            robotName={robot.id}
-            status={robot.status}
-            running={robot.running}
-            hold={robot.hold}
-            error={robot.error}
-            program={robot.program}
-            point={String(robot.point).padStart(4, '0')}
-            robotError={robot.robotError}
+            key={robot.id}
+            {...robot}
             setModalDialog={setModalDialog}
           />
         )}
       </div>
+
     </>
   )
 }

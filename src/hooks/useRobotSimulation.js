@@ -13,8 +13,7 @@ export const useRobotSimulation = (robotsCount) => {
 
             setRobots(prev =>
                 prev.map(robot => {
-                    const now = Date.now()
-                    if (!robot.errorUntil || now > robot.errorUntil) {
+                    if (!robot.errorUntil || Date.now() > robot.errorUntil) {
                         const updated = { ...robot }
                         setRobotStatus(updated, robot.point + 1, 0, 0)
                         updated.errorUntil = null
@@ -39,6 +38,7 @@ export const useRobotSimulation = (robotsCount) => {
                 newRobots[index] = robot
                 return newRobots
             })
+
         }, 10000)
 
         return () => {

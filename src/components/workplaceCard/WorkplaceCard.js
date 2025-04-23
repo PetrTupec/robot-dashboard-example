@@ -3,8 +3,9 @@ import StatusLedRobot from "../StatusLedRobot"
 import { findError } from "../../utils/ErrorManager"
 import "./workplaceCard.css"
 
-const WorkplaceCard = ({ robotName, status, running, hold, error, program, point, robotError, setModalDialog }) => {
+const WorkplaceCard = ({ id, status, running, hold, error, program, point, robotError, setModalDialog }) => {
     const errorData = findError(robotError.code)
+    point = String(point).padStart(4, '0')
 
     const handleOnClickInfo = () => {
         const title = errorData.id + " - " + errorData.message.en
@@ -24,7 +25,7 @@ const WorkplaceCard = ({ robotName, status, running, hold, error, program, point
         <div className={`workplace-card-container ${error ? "red-blinking-shadow" : ""}`}>
             <div className="workplace-card">
                 <div className={`workplace-card-header workplace-card-header${error ? "-error-bg" : "-bg"}`} >
-                    <strong>Robot {robotName}</strong>
+                    <strong>Robot {id}</strong>
                 </div>
                 <div className="workplace-card-body p-2">
                     <div className="row d-flex mb-1">

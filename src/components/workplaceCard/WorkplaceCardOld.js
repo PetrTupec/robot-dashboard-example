@@ -3,6 +3,7 @@ import StatusLedRobot from "../StatusLedRobot"
 import "./workplaceCardOld.css"
 
 const WorkplaceCard = ({ robotName, status, running, hold, error, program, point }) => {
+    point = String(point).padStart(4, '0')
 
     return (
         <div>
