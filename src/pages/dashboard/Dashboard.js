@@ -2,11 +2,11 @@ import Header from "../../components/Header"
 import ModalDialog from "../../components/ModalDialog"
 import WorkplaceCard from "../../components/workplaceCard/WorkplaceCard"
 import WorkplaceCardOld from "../../components/workplaceCard/WorkplaceCardOld"
+import ServerStatusHeader from "../../components/ServerStatusHeader"
+import ToolButtons from "../../components/ToolButtons"
 import { useEffect, useState } from "react"
 import { useRobotSimulation } from "../../hooks/useRobotSimulation"
 import "./Dashboard.css"
-import ServerStatusHeader from "../../components/ServerStatusHeader"
-import ToolButtons from "../../components/ToolButtons"
 
 const Dashboard = () => {
   const initialStateModalDialog = { show: false, title: "", message: "" }
@@ -14,7 +14,7 @@ const Dashboard = () => {
   const [isRunning, setIsRunning] = useState(true)
   const [isOldView, setIsOldView] = useState(false)
   const WorkplaceCardComponent = isOldView ? WorkplaceCardOld : WorkplaceCard
-  const { robots, isRunningRef } = useRobotSimulation()
+  const { robots, isRunningRef } = useRobotSimulation(20)
 
   useEffect(() => {
     const body = document.body
