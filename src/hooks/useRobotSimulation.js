@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { createRobots, setRobotStatus } from "../utils/RobotManager"
+import { createRobots, setRobotStatus } from "../utils/robotManager"
 
 export const useRobotSimulation = (robotsCount) => {
     const isRunningRef = useRef(true)

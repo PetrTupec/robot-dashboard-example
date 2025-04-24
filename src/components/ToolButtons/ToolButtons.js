@@ -1,4 +1,4 @@
-import "./toolButtons.css"
+import "./ToolButtons.css"
 
 const ToolButtons = ({ isRunning, onClickChangeView, onClickPauseSimulation, aditionalButtons }) => {
     return (

@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { Outlet } from "react-router-dom"
-import Navbar from "./Navbar"
-import SideNavigation from "./SideNavigation"
-import Footer from "./Footer"
+import Navbar from "./Navbar/Navbar"
+import SideNavigation from "./SideNavigation/SideNavigation"
+import Footer from "./Footer/Footer"
 
 const SharedLayout = () => {
     const [isSidebarVisible, setIsSidebarVisible] = useState(false);

@@ -1,4 +1,4 @@
-import "./counter.css"
+import "./Counter.css"
 
 const counter = ({ min = 0, max = 999, value, onChange }) => {
     const handleDecrement = () => onChange(value - 1)

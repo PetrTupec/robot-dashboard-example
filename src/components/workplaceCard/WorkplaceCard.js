@@ -1,8 +1,8 @@
 import robotIcon from "../../assets/icon_robot.png"
-import StatusLedRobot from "../StatusLedRobot"
-import { findError } from "../../utils/ErrorManager"
+import StatusLed from "../StatusLed/StatusLed"
+import { findError } from "../../utils/errorManager"
 import { forwardRef } from "react"
-import "./workplaceCard.css"
+import "./WorkplaceCard.css"
 
 const WorkplaceCard = forwardRef(({ id, status, running, hold, error, program, point, robotError, setModalDialog }, ref) => {
     const errorData = findError(robotError.code)
@@ -44,19 +44,19 @@ const WorkplaceCard = forwardRef(({ id, status, running, hold, error, program, p
                             />
                             <i className="small">{status ? "ONLINE" : "OFFLINE"}</i>
                             <div className="ms-auto text-small">
-                                <StatusLedRobot
+                                <StatusLed
                                     isOld={false}
                                     text={"Running"}
                                     color={"green"}
                                     isOn={running}
                                 />
-                                <StatusLedRobot
+                                <StatusLed
                                     isOld={false}
                                     text={"Hold"}
                                     color={"yellow"}
                                     isOn={hold}
                                 />
-                                <StatusLedRobot
+                                <StatusLed
                                     isOld={false}
                                     text={"Error"}
                                     color={"red"}

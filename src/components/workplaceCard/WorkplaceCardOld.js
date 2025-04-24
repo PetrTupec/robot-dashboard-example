@@ -1,6 +1,6 @@
 import robotIcon from "../../assets/icon_robot.png"
-import StatusLedRobot from "../StatusLedRobot"
-import "./workplaceCardOld.css"
+import StatusLed from "../StatusLed/StatusLed"
+import "./WorkplaceCardOld.css"
 
 const WorkplaceCard = ({ robotName, status, running, hold, error, program, point }) => {
     point = String(point).padStart(4, '0')
@@ -20,19 +20,19 @@ const WorkplaceCard = ({ robotName, status, running, hold, error, program, point
                             />
                             <i className="small">{status ? "ONLINE" : "OFFLINE"}</i>
                             <div className="ms-auto text-small">
-                                <StatusLedRobot
+                                <StatusLed
                                     isOld={true}
                                     text={"Running"}
                                     color={"green"}
                                     isOn={running}
                                 />
-                                <StatusLedRobot
+                                <StatusLed
                                     isOld={true}
                                     text={"Hold"}
                                     color={"yellow"}
                                     isOn={hold}
                                 />
-                                <StatusLedRobot
+                                <StatusLed
                                     isOld={true}
                                     text={"Error"}
                                     color={"red"}

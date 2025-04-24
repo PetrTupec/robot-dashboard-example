@@ -1,4 +1,4 @@
-import "./sideNavigation.css";
+import "./SideNavigation.css";
 import { Link } from "react-router-dom";
 
 const SideNavigation = ({ isVisible }) => {

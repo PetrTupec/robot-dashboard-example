@@ -1,6 +1,6 @@
-import "./statusLedRobot.css"
+import "./StatusLed.css"
 
-const StatusLedRobot = ({ isOld, text, color, isOn }) => {
+const StatusLed = ({ isOld, text, color, isOn }) => {
     return (
         <div className="col d-flex align-items-center">
             <span className="me-1">{text}</span>
@@ -9,4 +9,4 @@ const StatusLedRobot = ({ isOld, text, color, isOn }) => {
     )
 }
 
-export default StatusLedRobot
+export default StatusLed

@@ -4,7 +4,7 @@ import App from './App'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.min.js"
 import './index.css'
-import { ThemeProvider } from './utils/ThemeContext'
+import { ThemeProvider } from './context/ThemeContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(

@@ -1,4 +1,4 @@
-import "./dashboardHeader.css"
+import "./DashboardHeader.css"
 
 const DashboardHeader = ({ isOldView, errorCount, onClickErrorConter }) => {
     return (

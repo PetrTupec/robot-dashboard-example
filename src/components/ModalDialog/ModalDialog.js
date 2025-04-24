@@ -1,4 +1,4 @@
-import "./modalDialog.css"
+import "./ModalDialog.css"
 
 function modalDialog({ show, onClose, onCloseText, onConfirm, onComfirmText, title, message }) {
     return show

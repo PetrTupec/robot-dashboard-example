@@ -1,4 +1,4 @@
-const SidebarToggle = ({ onClick }) => {
+const SideNavigationToggle = ({ onClick }) => {
     return (
         <div className="d-md-none">
             <button
@@ -12,4 +12,4 @@ const SidebarToggle = ({ onClick }) => {
     )
 }
 
-export default SidebarToggle
+export default SideNavigationToggle

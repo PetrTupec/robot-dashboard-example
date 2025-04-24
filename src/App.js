@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Dashboard from "./pages/dashboard/Dashboard";
 
-import SharedLayout from "./components/SharedLayout";
+import SharedLayout from "./components/layout/SharedLayout";
 
 function App() {
   return (
