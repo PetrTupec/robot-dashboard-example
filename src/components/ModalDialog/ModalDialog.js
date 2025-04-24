@@ -1,13 +1,11 @@
 import "./ModalDialog.css"
 
 function modalDialog({ show, onClose, onCloseText, onConfirm, onComfirmText, title, message }) {
-    return show
-        ? <>
+    return show &&
+        <>
             <div className="modal-overlay"></div>
             <div
                 className="modal fade show"
-                style={{ display: "block" }}
-                tabIndex="-1"
             >
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
@@ -39,6 +37,5 @@ function modalDialog({ show, onClose, onCloseText, onConfirm, onComfirmText, tit
                 </div>
             </div>
         </>
-        : null
 }
 export default modalDialog

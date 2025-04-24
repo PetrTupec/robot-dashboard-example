@@ -87,7 +87,7 @@ const Dashboard = () => {
       <DashboardHeader
         isOldView={isOldView}
         errorCount={errorRobots.length}
-        onClickErrorConter={scrollToRobot}
+        onClickErrorCounter={scrollToRobot}
       />
 
       <div className={`d-flex flex-row flex-wrap gap-3 ${isOldView ? "" : "justify-content-center"}`}>

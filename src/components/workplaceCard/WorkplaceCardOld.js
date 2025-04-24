@@ -16,9 +16,9 @@ const WorkplaceCard = ({ robotName, status, running, hold, error, program, point
                         <div className="col d-flex flex-row align-items-center">
                             <img
                                 src={robotIcon}
-                                alt="robot-icon"
+                                alt="Robot icon"
                             />
-                            <i className="small">{status ? "ONLINE" : "OFFLINE"}</i>
+                            <span className="fst-italic">{status ? "ONLINE" : "OFFLINE"}</span>
                             <div className="ms-auto text-small">
                                 <StatusLed
                                     isOld={true}
@@ -46,9 +46,9 @@ const WorkplaceCard = ({ robotName, status, running, hold, error, program, point
                             <span className="col">Program</span>
                             <span className="col-auto ms-auto">Point</span>
                         </div>
-                        <div className="row text-small">
-                            <i className="col">{program}</i>
-                            <i className="col-auto ms-auto">P{point}</i>
+                        <div className="row text-small fst-italic">
+                            <span className="col">{program}</span>
+                            <span className="col-auto ms-auto">P{point}</span>
                         </div>
                     </div>
                 </div>

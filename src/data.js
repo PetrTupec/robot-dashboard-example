@@ -1,54 +1,107 @@
 export const errors = [
     {
-        "solution": { "en": "Turn off the power and then newly turn it on.\nIf the error recurs frequently, consult Panasonic representatives." },
-        "cause": { "en": "Servo power voltage degreased to 100 V or lower." },
-        "message": { "en": "Servo power down" },
-        "id": "A7051"
-    },
-    {
-
-        "solution": { "en": "Remove the cause of interference." },
-        "cause": { "en": "Safety holder is activated due to interference etc." },
-        "message": { "en": "Safety-holder working" },
-        "id": "E4010"
-    },
-    {
-        "solution": { "en": "Turn ON the target independent E-axis servo power, and then restart." },
-        "cause": { "en": "The target independent E-axis servo power is OFF." },
-        "message": { "en": "Please turn on Servo" },
-        "id": "E3100"
-    },
-    {
-        "solution": { "en": "001: Remove cause of interference and restart.\n002:Execute warm-up operation." },
-        "cause": { "en": "001: Collision is detected.\n002:If it occurs on the initial start-up operation of the day in cold climates, grease may not be warm enough." },
-        "message": { "en": "Collision detected" },
-        "id": "E7001"
-    },
-    {
-        "solution": { "en": "Check the program architecture." },
-        "cause": { "en": "HOLD command was executed." },
-        "message": { "en": "(User defined message)" },
-        "id": "E1900"
+        "solution": {
+            "en": "Power cycle the system by turning it off and on again.",
+            "cs": "Vypněte a znovu zapněte napájení systému."
+        },
+        "cause": {
+            "en": "Voltage to the servo dropped below 100 V.",
+            "cs": "Napětí serva kleslo pod 100 V."
+        },
+        "message": {
+            "en": "Servo power failure",
+            "cs": "Výpadek napájení serva"
+        },
+        "id": "AX051"
     },
     {
         "solution": {
-            "en": "Change robot orientation data.",
-            "cs": "Změnit naučený bod, nebo změnit interpolaci(MOVEL na MOVEP)."
+            "en": "Eliminate the source of the obstruction.",
+            "cs": "Odstraňte zdroj překážky."
         },
         "cause": {
-            "en": "Robot cannot make the orientation taught in the program.",
-            "cs": "Robot nemůže provést naučený pohyb."
+            "en": "The safety mechanism was triggered by an obstruction.",
+            "cs": "Bezpečnostní mechanismus byl aktivován kvůli překážce."
         },
         "message": {
-            "en": "Position does not match",
-            "cs": "Nelze dosáhnout pozice"
+            "en": "Safety mechanism active",
+            "cs": "Bezpečnostní mechanismus aktivní"
         },
-        "id": "E1050"
+        "id": "EX410"
     },
     {
-        "solution": { "en": "Check the wire feed path." },
-        "cause": { "en": "Wire feeder motor locked." },
-        "message": { "en": "Wire feeder lock detected" },
-        "id": "W1610"
+        "solution": {
+            "en": "Activate the E-axis servo power and reboot the system.",
+            "cs": "Zapněte napájení E-osy a restartujte systém."
+        },
+        "cause": {
+            "en": "The servo power for the E-axis is currently disabled.",
+            "cs": "Napájení serva pro E-osu je vypnuté."
+        },
+        "message": {
+            "en": "E-axis servo is off",
+            "cs": "Servo E-osy je vypnuté"
+        },
+        "id": "EX310"
+    },
+    {
+        "solution": {
+            "en": "1. Resolve the obstruction and restart.\n2. Run warm-up sequence.",
+            "cs": "1. Odstraňte překážku a restartujte.\n2. Spusťte zahřívací sekvenci."
+        },
+        "cause": {
+            "en": "1. A collision was detected.\n2. In cold conditions, insufficient grease temperature at startup.",
+            "cs": "1. Byla detekována kolize.\n2. Při nízkých teplotách může být tuk při spuštění příliš tuhý."
+        },
+        "message": {
+            "en": "Obstacle or cold start issue - axis",
+            "cs": "Překážka nebo problém při studeném startu - osa"
+        },
+        "id": "EX701"
+    },
+    {
+        "solution": {
+            "en": "Inspect the program flow or structure.",
+            "cs": "Zkontrolujte strukturu nebo průběh programu."
+        },
+        "cause": {
+            "en": "Execution reached a HOLD command.",
+            "cs": "Byl vykonán příkaz HOLD."
+        },
+        "message": {
+            "en": "Custom user message",
+            "cs": "Uživatelsky definovaná zpráva"
+        },
+        "id": "EX190"
+    },
+    {
+        "solution": {
+            "en": "Modify the robot's orientation data.",
+            "cs": "Změňte data orientace robota nebo upravte typ interpolace."
+        },
+        "cause": {
+            "en": "The robot is unable to reproduce the taught orientation.",
+            "cs": "Robot nedokáže zopakovat naučenou orientaci."
+        },
+        "message": {
+            "en": "Orientation mismatch",
+            "cs": "Neshoda v orientaci"
+        },
+        "id": "EX150"
+    },
+    {
+        "solution": {
+            "en": "Inspect the wire feed system for blockages.",
+            "cs": "Zkontrolujte podávání drátu kvůli možné blokaci."
+        },
+        "cause": {
+            "en": "The motor in the wire feeder has become jammed.",
+            "cs": "Motor podavače drátu je zablokovaný."
+        },
+        "message": {
+            "en": "Wire feed jammed",
+            "cs": "Zablokování podavače drátu"
+        },
+        "id": "WX610"
     }
-]
+];

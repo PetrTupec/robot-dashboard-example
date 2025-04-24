@@ -2,3 +2,7 @@
     overflow: auto;
     white-space: pre-line;
 }
+
+.modal {
+    display: block !important;
+}

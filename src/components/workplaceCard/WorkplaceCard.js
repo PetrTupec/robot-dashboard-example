@@ -5,11 +5,15 @@ import { forwardRef } from "react"
 import "./WorkplaceCard.css"
 
 const WorkplaceCard = forwardRef(({ id, status, running, hold, error, program, point, robotError, setModalDialog }, ref) => {
-    const errorData = findError(robotError.code)
+    const containerClass = `workplace-card-container ${error ? "red-blinking-shadow" : ""}`;
+    const headerClass = `workplace-card-header workplace-card-header${error ? "-error-bg" : "-bg"}`;
+
     point = String(point).padStart(4, '0')
+
+    const errorData = findError(robotError.code)
     const errorMessage =
-        errorData.id === "E1900"
-            ? robotError.subMessage
+        errorData.id === "EX190"
+            ? "HOLD - " + robotError.subMessage
             : errorData.message.en + " " + robotError.subMessage
 
     const handleOnClickInfo = () => {
@@ -28,11 +32,11 @@ const WorkplaceCard = forwardRef(({ id, status, running, hold, error, program, p
 
     return (
         <div
-            className={`workplace-card-container ${error ? "red-blinking-shadow" : ""}`}
+            className={containerClass}
             ref={ref}
         >
             <div className="workplace-card">
-                <div className={`workplace-card-header workplace-card-header${error ? "-error-bg" : "-bg"}`} >
+                <div className={headerClass} >
                     <strong>Robot {id}</strong>
                 </div>
                 <div className="workplace-card-body p-2">
@@ -40,9 +44,9 @@ const WorkplaceCard = forwardRef(({ id, status, running, hold, error, program, p
                         <div className="col d-flex flex-row align-items-center">
                             <img
                                 src={robotIcon}
-                                alt="robot-icon"
+                                alt="Robot icon"
                             />
-                            <i className="small">{status ? "ONLINE" : "OFFLINE"}</i>
+                            <span className="fst-italic">{status ? "ONLINE" : "OFFLINE"}</span>
                             <div className="ms-auto text-small">
                                 <StatusLed
                                     isOld={false}
@@ -69,15 +73,15 @@ const WorkplaceCard = forwardRef(({ id, status, running, hold, error, program, p
                         <span className="col">Program</span>
                         <span className="col-auto ms-auto">Point</span>
                     </div>
-                    <div className="row text-small">
-                        <i className="col">{program}</i>
-                        <i className="col-auto ms-auto">P{point}</i>
+                    <div className="row text-small fst-italic">
+                        <span className="col">{program}</span>
+                        <span className="col-auto ms-auto">P{point}</span>
                     </div>
                 </div>
             </div>
             {error > 0 &&
                 <div className="workplace-card-footer-bg d-flex p-2 text-small">
-                    <div>{robotError.code} - {errorData ? errorMessage : "Error not find"}</div>
+                    <div>{robotError.code} - {errorMessage}</div>
                     <button
                         className="ms-auto border-0 bg-warning icon-question d-flex align-items-center justify-content-center"
                         onClick={handleOnClickInfo}>

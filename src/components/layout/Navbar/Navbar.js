@@ -4,6 +4,7 @@ import { useTheme } from "../../../context/ThemeContext"
 
 const Navbar = ({ onClickToggle }) => {
     const { theme, toggleTheme } = useTheme();
+    const iconClass = `text-${theme === "light" ? "warning" : "secondary"} fas fa-lightbulb`
 
     return (
         <nav className="navbar navbar-expand position-fixed w-100">
@@ -17,7 +18,7 @@ const Navbar = ({ onClickToggle }) => {
                 className="btn ms-auto"
                 onClick={toggleTheme}
             >
-                <i className={`text-${theme === "light" ? "warning" : "secondary"} fas fa-lightbulb`}></i>
+                <i className={iconClass}></i>
             </button>
             <div className="d-md-none">
                 <button

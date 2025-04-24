@@ -1,12 +1,12 @@
 const robotErrors = [
-    { code: "A7051", message: "", subMessage: "" },                                     // Servo power down
-    { code: "E4010", message: "", subMessage: "" },                                     // Safety holder working
-    { code: "E3100", message: "", subMessage: "G5" },                                   // Please turn on Servo(**) **is Axis name.
-    { code: "E7001", message: "", subMessage: "FA" },                                   // Collision detected (FA) 
-    { code: "E1900", message: "", subMessage: "Check position of the next point" },     // HOLD user defined message
-    { code: "E1050", message: "", subMessage: "" },                                     // Position does not match
-    { code: "W1610", message: "", subMessage: "" },                                     // Wire feeder lock detected
-    { code: "W5050", message: "", subMessage: "" }                                      // Example of unknown error
+    { code: "AX051", message: "", subMessage: "" },                                     // Servo power failure
+    { code: "EX410", message: "", subMessage: "" },                                     // Safety mechanism active
+    { code: "EX310", message: "", subMessage: "G5" },                                   // E-axis servo is off
+    { code: "EX701", message: "", subMessage: "FA" },                                   // Obstacle or cold start issue 
+    { code: "EX190", message: "", subMessage: "Check position of the next point" },     // Custom user message
+    { code: "EX150", message: "", subMessage: "" },                                     // Orientation mismatch
+    { code: "WX610", message: "", subMessage: "" },                                     // Wire feed jammed
+    { code: "WX050", message: "", subMessage: "" }                                      // Example of unknown error
 ]
 
 export const createRobots = (robotsCount) => {
