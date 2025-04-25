@@ -7,6 +7,7 @@ import ToolButtons from "../../components/ToolButtons/ToolButtons"
 import Counter from "../../components/Counter/Counter"
 import { useEffect, useState, useRef } from "react"
 import { useRobotSimulation } from "../../hooks/useRobotSimulation"
+import { apiGet } from "../../utils/api"
 import "./Dashboard.css"
 
 const Dashboard = () => {
@@ -17,7 +18,8 @@ const Dashboard = () => {
   const [robotsCount, setRobotsCount] = useState(10)
   const [errorIndex, setErrorIndex] = useState(0)
   const [errorRobots, setErrorRobots] = useState([])
-  const { robots, isRunningRef } = useRobotSimulation(robotsCount)
+  const { isRunningRef } = useRobotSimulation(robotsCount)
+  const [robots, setRobots] = useState([])
   const WorkplaceCardComponent = isOldView ? WorkplaceCardOld : WorkplaceCard
   const refs = useRef({})
 
@@ -56,6 +58,16 @@ const Dashboard = () => {
   useEffect(() => {
     setErrorRobots(robots.filter(robot => robot.error === 1))
   }, [robots])
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      apiGet("/robots/status").then((data) => 
+        setRobots(data)
+      )
+    }, 1000)
+
+    return () => clearInterval(intervalId)
+  }, [])
 
   return (
     <>
