@@ -1,33 +1,25 @@
 import robotIcon from "../../assets/icon_robot.png"
 import StatusLed from "../StatusLed/StatusLed"
-import { findError } from "../../utils/errorManager"
-import { forwardRef } from "react"
+import { useState, useEffect, useRef, forwardRef } from "react"
+import { apiGet } from "../../utils/api"
 import "./WorkplaceCard.css"
+import useRobotErrorMessage from "../../hooks/useRobotErrorMessage"
 
 const WorkplaceCard = forwardRef(({ id, status, running, hold, error, program, point, robotError, setModalDialog }, ref) => {
     const containerClass = `workplace-card-container ${error ? "red-blinking-shadow" : ""}`;
     const headerClass = `workplace-card-header workplace-card-header${error ? "-error-bg" : "-bg"}`;
-
-    point = String(point).padStart(4, '0')
-
-    const errorData = findError(robotError.code)
-    const errorMessage =
-        errorData.id === "EX190"
-            ? "HOLD - " + robotError.subMessage
-            : errorData.message.en + " " + robotError.subMessage
+    const formattedPoint = String(point).padStart(4, '0')
+    const { errorMessage, errorData } = useRobotErrorMessage(robotError)
 
     const handleOnClickInfo = () => {
-        const title = errorData.id + " - " + errorMessage
-        const message =
-            "Message:\n" + errorData.message.en + "\n\n" +
-            "Cause:\n" + errorData.cause.en + "\n\n" +
-            "Solution:\n" + errorData.solution.en
+        const title = `${errorData.id} - ${errorMessage}`
+        const message = [
+            `Message:\n${errorData.message?.en ?? "-"}`,
+            `Cause:\n${errorData.cause?.en ?? "-"}`,
+            `Solution:\n${errorData.solution?.en ?? "-"}`
+        ].join("\n\n")
 
-        setModalDialog({
-            show: true,
-            title: title,
-            message: message
-        })
+        setModalDialog({ show: true, title, message })
     }
 
     return (
@@ -75,10 +67,11 @@ const WorkplaceCard = forwardRef(({ id, status, running, hold, error, program, p
                     </div>
                     <div className="row text-small fst-italic">
                         <span className="col">{program}</span>
-                        <span className="col-auto ms-auto">P{point}</span>
+                        <span className="col-auto ms-auto">P{formattedPoint}</span>
                     </div>
                 </div>
             </div>
+
             {error > 0 &&
                 <div className="workplace-card-footer-bg d-flex p-2 text-small">
                     <div>{robotError.code} - {errorMessage}</div>

@@ -65,7 +65,6 @@ const Dashboard = () => {
         setRobots(data)
       )
     }, 1000)
-
     return () => clearInterval(intervalId)
   }, [])
 
