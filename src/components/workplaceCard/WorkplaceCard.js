@@ -1,25 +1,36 @@
 import robotIcon from "../../assets/icon_robot.png"
 import StatusLed from "../StatusLed/StatusLed"
-import { useState, useEffect, useRef, forwardRef } from "react"
-import { apiGet } from "../../utils/api"
+import { forwardRef } from "react"
 import "./WorkplaceCard.css"
-import useRobotErrorMessage from "../../hooks/useRobotErrorMessage"
+import { useRobotErrorData } from "../../hooks/useRobotErrorMessage"
 
-const WorkplaceCard = forwardRef(({ id, status, running, hold, error, program, point, robotError, setModalDialog }, ref) => {
+const WorkplaceCard = forwardRef((props, ref) => {
+    const {
+        id,
+        status,
+        running,
+        hold,
+        error,
+        program,
+        point,
+        robotError,
+        setModalDialog
+    } = props
+
+    
+    const { errorTitle, errorMessage } = useRobotErrorData(robotError)
+    
     const containerClass = `workplace-card-container ${error ? "red-blinking-shadow" : ""}`;
     const headerClass = `workplace-card-header workplace-card-header${error ? "-error-bg" : "-bg"}`;
+    
     const formattedPoint = String(point).padStart(4, '0')
-    const { errorMessage, errorData } = useRobotErrorMessage(robotError)
 
     const handleOnClickInfo = () => {
-        const title = `${errorData.id} - ${errorMessage}`
-        const message = [
-            `Message:\n${errorData.message?.en ?? "-"}`,
-            `Cause:\n${errorData.cause?.en ?? "-"}`,
-            `Solution:\n${errorData.solution?.en ?? "-"}`
-        ].join("\n\n")
-
-        setModalDialog({ show: true, title, message })
+        setModalDialog({
+            show: true,
+            title: errorTitle,
+            message: errorMessage
+        })
     }
 
     return (
@@ -72,9 +83,9 @@ const WorkplaceCard = forwardRef(({ id, status, running, hold, error, program, p
                 </div>
             </div>
 
-            {error > 0 &&
+            {!!error &&
                 <div className="workplace-card-footer-bg d-flex p-2 text-small">
-                    <div>{robotError.code} - {errorMessage}</div>
+                    <div>{errorTitle}</div>
                     <button
                         className="ms-auto border-0 bg-warning icon-question d-flex align-items-center justify-content-center"
                         onClick={handleOnClickInfo}>

@@ -33,10 +33,11 @@ export const createRobots = (robotsCount) => {
 }
 
 export const setRobotStatus = (robot, point, hold, error) => {
-    const robotError = error
+    const robotError = robot.robotError.code !== 0 ? robot.robotError : (error
         ? { ...robotErrors[Math.floor(Math.random() * robotErrors.length)] }
-        : { code: 0, message: "", subMessage: "" }
+        : { code: 0, message: "", subMessage: "" });
 
+    
     robot.status = 1
     robot.running = error || hold ? 0 : 1
     robot.hold = error || hold ? 1 : 0

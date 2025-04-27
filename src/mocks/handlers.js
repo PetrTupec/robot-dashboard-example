@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw"
 import { getRobotSimulationData } from "./robotSimulationData"
-import { findError } from "../utils/errorManager"
+import { getErrorById } from "../utils/errorManager"
 
 export const handlers = [
   http.get("/robots/status", () => {
@@ -8,6 +8,6 @@ export const handlers = [
   }),
 
   http.get("/errors/:id", ({ params }) => {
-    return HttpResponse.json(findError(params))
+    return HttpResponse.json(getErrorById(params))
   })
 ]
