@@ -17,7 +17,6 @@ const WorkplaceCard = forwardRef((props, ref) => {
         setModalDialog
     } = props
 
-    
     const { errorTitle, errorMessage } = useRobotErrorData(robotError)
     
     const containerClass = `workplace-card-container ${error ? "red-blinking-shadow" : ""}`;

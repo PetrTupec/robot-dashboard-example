@@ -17,7 +17,7 @@ function modalDialog({ show, onClose, onCloseText, onConfirm, onComfirmText, tit
                             {onConfirm &&
                                 <button
                                     type="button"
-                                    className="btn btn-primary btn-sm small"
+                                    className="btn btn-warning btn-sm small"
                                     onClick={onConfirm}
                                 >
                                     {onComfirmText}
@@ -26,7 +26,7 @@ function modalDialog({ show, onClose, onCloseText, onConfirm, onComfirmText, tit
                             {onClose &&
                                 <button
                                     type="button"
-                                    className="btn btn-secondary btn-sm small"
+                                    className={`btn btn-${onConfirm ? "secondary" : "warning"} btn-sm small`}
                                     onClick={onClose}
                                 >
                                     {onCloseText}
