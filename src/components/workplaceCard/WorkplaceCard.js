@@ -2,7 +2,7 @@ import robotIcon from "../../assets/icon_robot.png"
 import StatusLed from "../StatusLed/StatusLed"
 import { forwardRef } from "react"
 import "./WorkplaceCard.css"
-import { useRobotErrorData } from "../../hooks/useRobotErrorMessage"
+import { useRobotErrorData } from "../../hooks/useRobotErrorData"
 
 const WorkplaceCard = forwardRef((props, ref) => {
     const {
