@@ -3,13 +3,15 @@ import ModalDialog from "../../components/ModalDialog/ModalDialog"
 import WorkplaceCard from "../../components/WorkplaceCard/WorkplaceCard"
 import WorkplaceCardOld from "../../components/WorkplaceCard/WorkplaceCardOld"
 import DashboardHeader from "../../components/DashboardHeader/DashboardHeader"
+import DashboardHeaderOld from "../../components/DashboardHeader/DashboardHeaderOld"
 import ToolButtons from "../../components/ToolButtons/ToolButtons"
 import Counter from "../../components/Counter/Counter"
+
 import { useEffect, useState, useRef } from "react"
 import { useRobotSimulation } from "../../hooks/useRobotSimulation"
 import { apiGet } from "../../utils/api"
+
 import "./Dashboard.css"
-import DashboardHeaderOld from "../../components/DashboardHeader/DashboardHeaderOld"
 
 const Dashboard = () => {
   const initialStateModalDialog = { show: false, title: "", message: "" }
@@ -19,6 +21,7 @@ const Dashboard = () => {
   const [robotsCount, setRobotsCount] = useState(10)
   const [errorIndex, setErrorIndex] = useState(0)
   const [errorRobots, setErrorRobots] = useState([])
+  const [isServerOnline, setIsServerOnline] = useState(true)
   const { isRunningRef } = useRobotSimulation(robotsCount)
   const [robots, setRobots] = useState([])
   const WorkplaceCardComponent = isOldView ? WorkplaceCardOld : WorkplaceCard
@@ -62,10 +65,17 @@ const Dashboard = () => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      apiGet("/robots/status").then((data) =>
-        setRobots(data)
-      )
+      apiGet("/robots/status")
+        .then((data) => {
+          setRobots(data)
+          setIsServerOnline(true)
+        })
+        .catch((error) => {
+          console.error("Fetch error:", error)
+          setIsServerOnline(false)
+        })
     }, 1000)
+
     return () => clearInterval(intervalId)
   }, [])
 
@@ -99,11 +109,13 @@ const Dashboard = () => {
       <div className="row">
         <div className="col mb-3">
           {isOldView
-            ? <DashboardHeaderOld />
+            ? <DashboardHeaderOld
+              serverStatus={isServerOnline} />
             : <DashboardHeader
               isOldView={isOldView}
               errorCount={errorRobots.length}
               onClickErrorCounter={scrollToRobot}
+              serverStatus={isServerOnline}
             />
           }
         </div>

@@ -1,10 +1,19 @@
 import "./DashboardHeader.css"
+import StatusLed from "../StatusLed/StatusLed"
 
-const DashboardHeader = ({ isOldView, errorCount, onClickErrorCounter }) => {
+const DashboardHeader = ({ isOldView, errorCount, onClickErrorCounter, serverStatus }) => {
+const statusLedColor = serverStatus ? "green" : "red"
+
     return (
         <div className="d-flex flex-row align-items-center gap-2">
-            <div>Server status</div>
-            <div className="server-status-led led-green on"></div>
+            <div className="d-flex">
+                <span className="me-2">Server status</span>
+                <StatusLed
+                    isOld={true}
+                    color={statusLedColor}
+                    isOn={true}
+                />
+            </div>
             {(!isOldView && errorCount > 0) &&
                 <button
                     className="btn btn-danger px-3 error-indicate-button shadow"
