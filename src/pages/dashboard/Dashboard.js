@@ -1,7 +1,7 @@
 import Header from "../../components/layout/Header/Header"
 import ModalDialog from "../../components/ModalDialog/ModalDialog"
-import WorkplaceCard from "../../components/workplaceCard/WorkplaceCard"
-import WorkplaceCardOld from "../../components/workplaceCard/WorkplaceCardOld"
+import WorkplaceCard from "../../components/WorkplaceCard/WorkplaceCard"
+import WorkplaceCardOld from "../../components/WorkplaceCard/WorkplaceCardOld"
 import DashboardHeader from "../../components/DashboardHeader/DashboardHeader"
 import ToolButtons from "../../components/ToolButtons/ToolButtons"
 import Counter from "../../components/Counter/Counter"
@@ -9,6 +9,7 @@ import { useEffect, useState, useRef } from "react"
 import { useRobotSimulation } from "../../hooks/useRobotSimulation"
 import { apiGet } from "../../utils/api"
 import "./Dashboard.css"
+import DashboardHeaderOld from "../../components/DashboardHeader/DashboardHeaderOld"
 
 const Dashboard = () => {
   const initialStateModalDialog = { show: false, title: "", message: "" }
@@ -61,7 +62,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      apiGet("/robots/status").then((data) => 
+      apiGet("/robots/status").then((data) =>
         setRobots(data)
       )
     }, 1000)
@@ -95,11 +96,18 @@ const Dashboard = () => {
         }
       />
 
-      <DashboardHeader
-        isOldView={isOldView}
-        errorCount={errorRobots.length}
-        onClickErrorCounter={scrollToRobot}
-      />
+      <div className="row">
+        <div className="col mb-3">
+          {isOldView
+            ? <DashboardHeaderOld />
+            : <DashboardHeader
+              isOldView={isOldView}
+              errorCount={errorRobots.length}
+              onClickErrorCounter={scrollToRobot}
+            />
+          }
+        </div>
+      </div>
 
       <div className={`d-flex flex-row flex-wrap gap-3 ${isOldView ? "" : "justify-content-center"}`}>
         {robots.map((robot) =>
