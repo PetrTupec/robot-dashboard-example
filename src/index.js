@@ -7,7 +7,7 @@ import './index.css'
 import { ThemeProvider } from './context/ThemeContext'
 
 async function enableMocking() {
-  if (process.env.NODE_ENV !== 'development') {
+  if (process.env.REACT_APP_API_MODE !== "msw") {
     return
   }
 
