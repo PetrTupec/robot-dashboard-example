@@ -17,8 +17,10 @@
   "scripts": {
     "start": "react-scripts start",
     "start:presentation": "env-cmd -f .env.presentation react-scripts start",
+    "start:production": "env-cmd -f .env.production react-scripts start",
     "build": "react-scripts build && del .\\build\\mockServiceWorker.js",
     "build:presentation": "env-cmd -f .env.presentation react-scripts build && del .\\build\\mockServiceWorker.js",
+    "build:production": "env-cmd -f .env.production react-scripts build && del .\\build\\mockServiceWorker.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+# Robot Dashboard
+ 
+Modernizace existujícího dashboardu pro sledování stavu robotů pomocí Reactu a Bootstrapu, zaměřená na zlepšení čitelnosti, použitelnosti a efektivity práce obsluhy v reálném čase.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## O projektu
 
-## Available Scripts
+Projekt vznikl jako návrh na možné vylepšení existující aplikace. Konkrétně se zaměřuje na část **Dashboard**, která zobrazuje real-time data z robotizovaných pracovišť. Tato část je určena hlavně pro členy obsluhy a umožňuje sledovat průběh výroby a rychle reagovat na případné změny nebo poruchy z jednoho místa.
 
-In the project directory, you can run:
+Moje řešení modernizuje původní aplikaci, která byla vytvořená pomocí **JavaScript**, **CSS** a **HTML**.
 
-### `npm start`
+### Motivace projektu
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Cílem bylo přinést moderní a efektivnější řešení využitím technologií **React** a **Bootstrap**, a tím zlepšit použitelnost a čitelnost aplikace. Vylepšení zahrnují:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Vylepšení zobrazení:**
+- Zavedení přepínání světlého a tmavého režimu pro snazší sledování při dlouhodobé práci.
+- Výraznější vizualizace chybových stavů pro okamžité upoutání pozornosti obsluhy.
+- Responsivní design pro pohodlné použití na mobilních zařízeních.
 
-### `npm test`
+**Přidaná funkcionalita:**
+- Využití dat o chybách, která původní aplikace ignorovala.
+- Vytvoření vlastní databáze chyb podle dokumentace robotů.
+- Zobrazení rozšířených informací o chybách (popis, příčina, návrh řešní) – pracovníci mohou lépe odhadnout potřebný zásah (časová náročnost, nástroje, potřebná kvalifikace).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Díky těmto vylepšením je aplikace silným nástrojem, který šetří čas při řešení vzniklých komplikací a zvyšuje efektivitu provozu.
 
-### `npm run build`
+## Funkcionalita
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Zobrazení real-time stavu všech robotů.
+- Zvýraznění robotů, které se nachází v chybovém stavu.
+- Přepínání mezi světlým a tmavým režimem aplikace.
+- Responzivní rozvržení přizpůsobené pro různá zařízení (desktop, tablet, mobil).
+- Zobrazení rozšířených informací o chybách robotů na základě vlastní databáze.
+- Pro účely prezentace jsou přidány funkce pro změnu počtu robotů a pozastavení simulace stavu robotů.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Demo
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Původní vzhled stránky jsem naprogramoval od základu bez použití původních kódů nebo stylování. Vzhled se mírně liší a jsou zobrazeny pouze části, které dávají smysl v rámci prezentace. Vynechal jsem například původní menu, loga a další prvky.
 
-### `npm run eject`
+Pro účely prezentace je použit soubor s vybranými příklady chyb v pozměněném znění.  
+Stav robotů je pouze simulován a neodpovídá skutečné chybovosti.  
+Chyby jsou náhodně vybírány a přiřazovány náhodným robotům v různých časových intervalech.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Použité technologie
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Client
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- JavaScript
+- React
+- React Router
+- HTML/CSS
+- Bootstrap
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Simulace API
+	
+- Mockování HTTP požadavků pomocí **Mock Service Worker (MSW)**.
+- Simulace real-time stavu robotů s náhodným přiřazováním chyb.
+- Vlastní generátor dat propojený přes `fetch` pro věrné napodobení chování API.
 
-## Learn More
+## Ukázna UI
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Vylepšené zobrazení
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Vylepšený dashboard](images/new_view.png)
 
-### Code Splitting
+#### Původní zobrazení
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![Detail chyby](images/error_detail.png)
 
-### Analyzing the Bundle Size
+#### Vylepšené zobrazení detail chyby
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![Seznam faktur](images/old_view.png)
 
-### Making a Progressive Web App
+## Online demo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Projekt je nasazený na Netlify:  
+[Otevřít aplikaci](https://robot-dashboard-example.netlify.app/dashboard)
 
-### Advanced Configuration
+## Lokální spuštění
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Aplikaci lze spustit v několika režimech podle účelu (vývoj, prezentace, produkce). Chování se řídí proměnnou `REACT_APP_API_MODE` v odpovídajících `.env` souborech.
 
-### Deployment
+### Dostupné režimy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+| Režim           | Proměnná                      | Popis                                                                 |
+|-----------------|-------------------------------|-----------------------------------------------------------------------|
+| Vývoj           | `REACT_APP_API_MODE=msw`      | Používá [Mock Service Worker](https://mswjs.io/) pro simulaci API.    |
+| Prezentace      | `REACT_APP_API_MODE=fakeData` | Nepoužívá MSW, data se načítají z lokálních zdrojů (fake data).       |
+| Produkce        | `REACT_APP_API_MODE=server`   | Připojení k reálnému backendu.                                        |
 
-### `npm run build` fails to minify
+1. Naklonování repozitáře:
+```bash
+   git clone https://github.com/PetrTupec/robot-dashboard-example.git
+```
+2. Přepnutí do složky projektu:
+```bash
+   cd robot-dashboard-example
+```
+3. Nainstalování závislostí:
+```bash 
+    npm install
+```
+4. Spuštění:
+```bash 
+	npm start                  # Vývojový režim s Mock Service Workerem
+    npm run start:presentation # Režim s fake daty (bez MSW)
+    npm run start:production   # Režim s voláním reálného backendu
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Po spuštění bude aplikace dostupná:
+
+- Frontend: http://localhost:3000
+
+## Důležitá upozornění
+
+Tento projekt napodobuje funkcionalitu jiné aplikace, avšak je **plně naprogramován od začátku**.
+- **Vzhled** a **API odpovědi** se od původní aplikace **liší** a neodpovídají jí.  
+- Nebyly použity žádné části původního kódu ani struktura API odpovědí.
