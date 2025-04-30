@@ -55,11 +55,11 @@ Díky těmto vylepšením je aplikace silným nástrojem, který šetří čas p
 
 ![Vylepšený dashboard](images/new_view.png)
 
-#### Původní zobrazení
+#### Vylepšené zobrazení detail chyby
 
 ![Detail chyby](images/error_detail.png)
 
-#### Vylepšené zobrazení detail chyby
+#### Původní zobrazení
 
 ![Seznam faktur](images/old_view.png)
 
