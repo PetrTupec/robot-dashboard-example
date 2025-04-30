@@ -33,14 +33,6 @@ Díky těmto vylepšením je aplikace silným nástrojem, který šetří čas p
 - Zobrazení rozšířených informací o chybách robotů na základě vlastní databáze.
 - Pro účely prezentace jsou přidány funkce pro změnu počtu robotů a pozastavení simulace stavu robotů.
 
-## Demo
-
-Původní vzhled stránky jsem naprogramoval od základu bez použití původních kódů nebo stylování. Vzhled se mírně liší a jsou zobrazeny pouze části, které dávají smysl v rámci prezentace. Vynechal jsem například původní menu, loga a další prvky.
-
-Pro účely prezentace je použit soubor s vybranými příklady chyb v pozměněném znění.  
-Stav robotů je pouze simulován a neodpovídá skutečné chybovosti.  
-Chyby jsou náhodně vybírány a přiřazovány náhodným robotům v různých časových intervalech.
-
 ## Použité technologie
 
 ### Client
@@ -72,6 +64,12 @@ Chyby jsou náhodně vybírány a přiřazovány náhodným robotům v různých
 ![Seznam faktur](images/old_view.png)
 
 ## Online demo
+
+Původní vzhled stránky jsem naprogramoval od základu bez použití původních kódů nebo stylování. Vzhled se mírně liší a jsou zobrazeny pouze části, které dávají smysl v rámci prezentace. Vynechal jsem například původní menu, loga a další prvky.
+
+Pro účely prezentace je použit soubor s vybranými příklady chyb v pozměněném znění.  
+Stav robotů je pouze simulován a neodpovídá skutečné chybovosti.  
+Chyby jsou náhodně vybírány a přiřazovány náhodným robotům v různých časových intervalech.
 
 Projekt je nasazený na Netlify:  
 [Otevřít aplikaci](https://robot-dashboard-example.netlify.app/dashboard)
