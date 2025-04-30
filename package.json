@@ -16,10 +16,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start:presentation": "env-cmd -f .env.presentation react-scripts start",
+    "build": "react-scripts build && del .\\build\\mockServiceWorker.js",
+    "build:presentation": "env-cmd -f .env.presentation react-scripts build && del .\\build\\mockServiceWorker.js",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "start:presentation": "env-cmd -f .env.presentation react-scripts start"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

@@ -20,10 +20,10 @@ const fakeData = (url) =>
     })
 
 export const apiGet = (url) => {
-    const apiMode = process.env.REACT_APP_API_MODE;
+    const apiMode = process.env.REACT_APP_API_MODE
     if (apiMode === "msw" || apiMode === "server") {
-        return fetchData(url);
+        return fetchData(url)
     } else {
-        return fakeData(url);
+        return fakeData(url)
     }
 }

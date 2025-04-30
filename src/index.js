@@ -24,4 +24,3 @@ enableMocking().then(() => {
     </ThemeProvider>
   )
 })
-
