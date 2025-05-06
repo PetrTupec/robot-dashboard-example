@@ -1,37 +1,72 @@
 # Robot Dashboard
- 
-Modernizace existujícího dashboardu pro sledování stavu robotů pomocí Reactu a Bootstrapu, zaměřená na zlepšení čitelnosti, použitelnosti a efektivity práce obsluhy v reálném čase.
 
-## O projektu
+Aplikace zobrazuje aktuální stav robotů, včetně informací o:
+ - pracovním režimu (online, běží, zastaven, chyba).
+ - Názvu aktuálně spuštěného programu.
+ - Čísla řádku v programu.
+Je určena pro pracovníky, kteří mají za úkol zajistit plynulost výroby a řešit vzniklé problémy.
 
-Projekt vznikl jako návrh na možné vylepšení existující aplikace. Konkrétně se zaměřuje na část **Dashboard**, která zobrazuje real-time data z robotizovaných pracovišť. Tato část je určena hlavně pro členy obsluhy a umožňuje sledovat průběh výroby a rychle reagovat na případné změny nebo poruchy z jednoho místa.
+## Motivace
 
-Moje řešení modernizuje původní aplikaci, která byla vytvořená pomocí **JavaScript**, **CSS** a **HTML**.
+Cílem projektu bylo procvičit si práci s Reactem a navrhnout efektivnější způsob diagnostiky chyb robotů. Aplikace má pomoci pracovníkům plánovat řešení problémů podle jejich závažnosti a časové náročnosti.
+V původní aplikaci byla chyba signalizována rozsvícením červené diody. Znění a kód chyby bylo možné zjistit na ovládacím panelu robota a podrobnosti k řešení vyhledat v dokumentaci.
+Na základě analýzy API jsem zjistil, že roboti posílají dostatek dat pro identifikaci chyby na dálku. V kombinaci s databází chyb tak lze potřebné informace zobrazit přímo v dashboardu.
 
-### Motivace projektu
+**Cílem bylo implementovat následující rozšíření:**
+- světlý/tmavý režim
+- výraznější indikace chyby
+- responzivní zobrazení
+- Zobrazení kódu a zprávy chyby
+- Zobrazení detailu chyby - popis, příčina a řešení
 
-Cílem bylo přinést moderní a efektivnější řešení využitím technologií **React** a **Bootstrap**, a tím zlepšit použitelnost a čitelnost aplikace. Vylepšení zahrnují:
+## Popis layoutu
 
-**Vylepšení zobrazení:**
-- Zavedení přepínání světlého a tmavého režimu pro snazší sledování při dlouhodobé práci.
-- Výraznější vizualizace chybových stavů pro okamžité upoutání pozornosti obsluhy.
-- Responsivní design pro pohodlné použití na mobilních zařízeních.
+Vrchní lišta
+ - název aplikace
+ - přepínání světlého a tmavého režimu
 
-**Přidaná funkcionalita:**
-- Využití dat o chybách, která původní aplikace ignorovala.
-- Vytvoření vlastní databáze chyb podle dokumentace robotů.
-- Zobrazení rozšířených informací o chybách (popis, příčina, návrh řešní) – pracovníci mohou lépe odhadnout potřebný zásah (časová náročnost, nástroje, potřebná kvalifikace).
+Postranní panel
+ - navigace v aplikaci
 
-Díky těmto vylepšením je aplikace silným nástrojem, který šetří čas při řešení vzniklých komplikací a zvyšuje efektivitu provozu.
+Hlavička stránky
+ - název stránky
+ - ovládací tlačítka (zleva)
+    1. přepínání mezi novým a starým zobrazením
+    2. pozastavení aktualizace stavu robotů
+        - mění ikonu „pauza“ a „přehrát“ 
+    3. odebrat robota
+        - deaktivováno při minimálním počtu robotů
+    4. počet robotů
+    5. přidat robota
+        - deaktivováno při maximálním možném počtu robotů
+    6. pokud má některý robot chybu, zobrazí se červené tlačítko jako upozornění
+        - při kliknutí na toto tlačítko se zobrazení posouvá mezi roboty s chybou
+        - užitečné na menších obrazovkách nebo při větším počtu robotů
+
+Ukazatel stavu serveru
+ - mění barvu diody podle toho, zda ze serveru přicházejí data
+
+Karta robota
+ - název robota
+ - připojení online/offline
+ - barevné diody zobrazující stav
+    - simulují rozsvícení a zhasnutí podle aktuálního stavu – běží, zastaven, chyba
+ - název spuštěného programu
+ - aktuální řádek v programu
+ - pokud nastane chyba, zobrazí se spodní část karty s kódem chyby, zprávou a tlačítkem s otazníkem pro zobrazení detailu
+
+Patička
+ - přihlášený uživatel
+ - autor aplikace
 
 ## Funkcionalita
 
-- Zobrazení real-time stavu všech robotů.
+- Každou vteřinu vyčte z API odpovědi informace o aktuálním stavu robotů a potom je vizualizuje.
 - Zvýraznění robotů, které se nachází v chybovém stavu.
 - Přepínání mezi světlým a tmavým režimem aplikace.
 - Responzivní rozvržení přizpůsobené pro různá zařízení (desktop, tablet, mobil).
 - Zobrazení rozšířených informací o chybách robotů na základě vlastní databáze.
-- Pro účely prezentace jsou přidány funkce pro změnu počtu robotů a pozastavení simulace stavu robotů.
+- Pro účely prezentace jsou přidány tlačítka pro přepínání mezi novým a starým vzhledem aplikace, změnu počtu robotů a pozastavení simulace stavu robotů.
 
 ## Použité technologie
 
@@ -47,15 +82,15 @@ Díky těmto vylepšením je aplikace silným nástrojem, který šetří čas p
 	
 - Mockování HTTP požadavků pomocí **Mock Service Worker (MSW)**.
 - Simulace real-time stavu robotů s náhodným přiřazováním chyb.
-- Vlastní generátor dat propojený přes `fetch` pro věrné napodobení chování API.
+- Generátor dat propojený přes `fetch` pro napodobení chování API.
 
-## Ukázna UI
+## Ukázka UI
 
-#### Vylepšené zobrazení
+#### Nové zobrazení
 
 ![Vylepšený dashboard](images/new_view.png)
 
-#### Vylepšené zobrazení detail chyby
+#### Nové zobrazení - detail chyby
 
 ![Detail chyby](images/error_detail.png)
 
@@ -88,11 +123,11 @@ Aplikaci lze spustit v několika režimech podle účelu (vývoj, prezentace, pr
 
 1. Naklonování repozitáře:
 ```bash
-   git clone https://github.com/PetrTupec/robot-dashboard-example.git
+    git clone https://github.com/PetrTupec/robot-dashboard-example.git
 ```
 2. Přepnutí do složky projektu:
 ```bash
-   cd robot-dashboard-example
+    cd robot-dashboard-example
 ```
 3. Nainstalování závislostí:
 ```bash 
@@ -100,7 +135,7 @@ Aplikaci lze spustit v několika režimech podle účelu (vývoj, prezentace, pr
 ```
 4. Spuštění:
 ```bash 
-	npm start                  # Vývojový režim s Mock Service Workerem
+    npm start                  # Vývojový režim s Mock Service Workerem
     npm run start:presentation # Režim s fake daty (bez MSW)
     npm run start:production   # Režim s voláním reálného backendu
 ```
