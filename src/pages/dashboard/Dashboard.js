@@ -10,6 +10,7 @@ import Counter from "../../components/Counter/Counter"
 import { useEffect, useState, useRef } from "react"
 import { useRobotSimulation } from "../../hooks/useRobotSimulation"
 import { apiGet } from "../../utils/api"
+import { useTheme } from "../../context/ThemeContext" 
 
 import "./Dashboard.css"
 
@@ -23,6 +24,7 @@ const Dashboard = () => {
   const [errorRobots, setErrorRobots] = useState([])
   const [isServerOnline, setIsServerOnline] = useState(true)
   const { isRunningRef } = useRobotSimulation(robotsCount)
+  const { toggleView } = useTheme()
   const [robots, setRobots] = useState([])
   const WorkplaceCardComponent = isOldView ? WorkplaceCardOld : WorkplaceCard
   const refs = useRef({})
@@ -42,6 +44,7 @@ const Dashboard = () => {
 
   const handleClickChangeView = () => {
     setIsOldView(!isOldView)
+    toggleView()
   }
 
   const handleOnCloseModalDialog = () => {
@@ -102,6 +105,9 @@ const Dashboard = () => {
             max={20}
             value={robotsCount}
             onChange={setRobotsCount}
+            toolTipDecrement={"Add robot"}
+            toolTipValue={"Robot count"}
+            tooltipIncrement={"Remove robot"}
           />
         }
       />
