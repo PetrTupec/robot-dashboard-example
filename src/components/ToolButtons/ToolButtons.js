@@ -1,16 +1,22 @@
 import "./ToolButtons.css"
+import { useTheme } from "../../context/ThemeContext"
 
 const ToolButtons = ({ isRunning, onClickChangeView, onClickPauseSimulation, aditionalButtons }) => {
+    const { viewMode } = useTheme()
+    const buttonChangeViewText = viewMode === "old" ? "NEW" : "OLD"
+
     return (
         <div className="tool-buttons">
             <div className="btn-group shadow">
                 <button
-                    className="btn btn-warning"
+                    title="Toggle view"
+                    className="btn btn-warning btn-change-view"
                     onClick={onClickChangeView}
                 >
-                    <i className="fas fa-rotate"></i>
+                    <span className="fw-bold text-small">{buttonChangeViewText}</span>
                 </button>
                 <button
+                    title={isRunning ? "Pause simulation" : "Continue simulation"}
                     className="btn btn-warning"
                     onClick={onClickPauseSimulation}
                 >

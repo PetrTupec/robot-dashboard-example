@@ -3,3 +3,7 @@
     top: 74px;
     right: 24px;
 }
+
+.btn-change-view {
+    min-width: 50px;
+}
