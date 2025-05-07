@@ -18,10 +18,10 @@ const WorkplaceCard = forwardRef((props, ref) => {
     } = props
 
     const { errorTitle, errorMessage } = useRobotErrorData(robotError)
-    
+
     const containerClass = `workplace-card-container ${error ? "red-blinking-shadow" : ""}`;
     const headerClass = `workplace-card-header workplace-card-header${error ? "-error-bg" : "-bg"}`;
-    
+
     const formattedPoint = String(point).padStart(4, '0')
 
     const handleOnClickInfo = () => {
@@ -86,6 +86,7 @@ const WorkplaceCard = forwardRef((props, ref) => {
                 <div className="workplace-card-footer-bg d-flex p-2 text-small">
                     <div>{errorTitle}</div>
                     <button
+                        title="About error"
                         className="ms-auto border-0 bg-warning icon-question d-flex align-items-center justify-content-center"
                         onClick={handleOnClickInfo}>
                         <span className="text-dark">?</span>
