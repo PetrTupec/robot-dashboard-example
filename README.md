@@ -8,16 +8,28 @@ Je určena pro pracovníky, kteří mají za úkol zajistit plynulost výroby a 
 
 ## Motivace
 
-Cílem projektu bylo procvičit si práci s Reactem a navrhnout efektivnější způsob diagnostiky chyb robotů. Aplikace má pomoci pracovníkům plánovat řešení problémů podle jejich závažnosti a časové náročnosti.
-V původní aplikaci byla chyba signalizována rozsvícením červené diody. Znění a kód chyby bylo možné zjistit na ovládacím panelu robota a podrobnosti k řešení vyhledat v dokumentaci.
-Na základě analýzy API jsem zjistil, že roboti posílají dostatek dat pro identifikaci chyby na dálku. V kombinaci s databází chyb tak lze potřebné informace zobrazit přímo v dashboardu.
+Cílem projektu bylo navrhnout efektivnější způsob diagnostiky chyb robotů.
+
+V původní aplikaci byla chyba signalizována rozsvícením červené diody.
+Pro identifikaci chyby bylo zapotřebí zajít k ovládacímu panelu robota kde byl kód chyby a popis. Pro příčinu poruchy a návrh řešení bylo nutné listovat v manuálu.
+
+Na základě analýzy API jsem zjistil, že roboti poskytují dostatek dat pro identifikaci chyby na dálku. V kombinaci s databází chyb a jejich detaily lze potřebné informace zobrazit přímo v dashboardu.
 
 **Cílem bylo implementovat následující rozšíření:**
 - světlý/tmavý režim
 - výraznější indikace chyby
 - responzivní zobrazení
 - Zobrazení kódu a zprávy chyby
-- Zobrazení detailu chyby - popis, příčina a řešení
+- Zobrazení detailu chyby po kliknutí na tlačítko - popis, příčina a řešení
+
+## Funkcionalita
+
+- Každou vteřinu vyčte z API odpovědi informace o aktuálním stavu robotů a potom je vizualizuje.
+- Zvýraznění robotů, které se nachází v chybovém stavu.
+- Přepínání mezi světlým a tmavým režimem aplikace.
+- Responzivní rozvržení přizpůsobené pro různá zařízení (desktop, tablet, mobil).
+- Zobrazení rozšířených informací o chybách robotů na základě vlastní databáze.
+- Pro účely prezentace jsou přidány tlačítka pro přepínání mezi novým a starým vzhledem aplikace, změnu počtu robotů a pozastavení simulace stavu robotů.
 
 ## Popis layoutu
 
@@ -59,18 +71,9 @@ Patička
  - přihlášený uživatel
  - autor aplikace
 
-## Funkcionalita
-
-- Každou vteřinu vyčte z API odpovědi informace o aktuálním stavu robotů a potom je vizualizuje.
-- Zvýraznění robotů, které se nachází v chybovém stavu.
-- Přepínání mezi světlým a tmavým režimem aplikace.
-- Responzivní rozvržení přizpůsobené pro různá zařízení (desktop, tablet, mobil).
-- Zobrazení rozšířených informací o chybách robotů na základě vlastní databáze.
-- Pro účely prezentace jsou přidány tlačítka pro přepínání mezi novým a starým vzhledem aplikace, změnu počtu robotů a pozastavení simulace stavu robotů.
-
 ## Použité technologie
 
-### Client
+### Klient
 
 - JavaScript
 - React
