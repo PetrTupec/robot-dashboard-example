@@ -106,9 +106,9 @@ const Dashboard = () => {
             max={20}
             value={robotsCount}
             onChange={setRobotsCount}
-            toolTipDecrement={"Add robot"}
+            toolTipDecrement={"Remove robot"}
             toolTipValue={"Robot count"}
-            tooltipIncrement={"Remove robot"}
+            tooltipIncrement={"Add robot"}
           />
         }
       />
