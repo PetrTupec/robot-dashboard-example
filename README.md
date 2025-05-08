@@ -4,6 +4,7 @@ Aplikace zobrazuje aktuální stav robotů, včetně informací o:
  - pracovním režimu (online, běží, zastaven, chyba).
  - Názvu aktuálně spuštěného programu.
  - Čísla řádku v programu.
+ 
 Je určena pro pracovníky, kteří mají za úkol zajistit plynulost výroby a řešit vzniklé problémy.
 
 ## Motivace
