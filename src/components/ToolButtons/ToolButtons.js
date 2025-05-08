@@ -1,8 +1,6 @@
 import "./ToolButtons.css"
-import { useTheme } from "../../context/ThemeContext"
 
-const ToolButtons = ({ isRunning, onClickChangeView, onClickPauseSimulation, aditionalButtons }) => {
-    const { viewMode } = useTheme()
+const ToolButtons = ({ isRunning, viewMode, onClickChangeView, onClickPauseSimulation, aditionalButtons }) => {
     const buttonChangeViewText = viewMode === "old" ? "NEW" : "OLD"
 
     return (
