@@ -1,6 +1,6 @@
 import "./ModalDialog.css"
 
-function modalDialog({ show, onClose, onCloseText, onConfirm, onComfirmText, title, message }) {
+const modalDialog = ({ show, onClose, onCloseText, onConfirm, onComfirmText, title, message }) => {
     return show &&
         <>
             <div className="modal-overlay"></div>
