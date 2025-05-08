@@ -19,11 +19,16 @@
     border-right: rgb(24, 24, 24) solid 1px;
 }
 
-.nav-link:hover {
-    color: aliceblue !important
+.nav-link{
+    background-color: transparent !important;
+    color:  var(--bs-secondary) !important;
 }
 
-#sidenav>* .nav-link:hover {
+.active {
+    color: aliceblue !important;
+}
+
+#sidenav>* .nav-link:hover, .active{
     margin-left: 5px;
 }
 
