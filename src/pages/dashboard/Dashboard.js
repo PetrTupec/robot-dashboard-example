@@ -19,13 +19,13 @@ const Dashboard = () => {
   const [modalDialog, setModalDialog] = useState(initialStateModalDialog)
   const [isRunning, setIsRunning] = useState(true)
   const [isOldView, setIsOldView] = useState(false)
+  const [isServerOnline, setIsServerOnline] = useState(true)
   const [robotsCount, setRobotsCount] = useState(10)
   const [errorIndex, setErrorIndex] = useState(0)
-  const [errorRobots, setErrorRobots] = useState([])
-  const [isServerOnline, setIsServerOnline] = useState(true)
-  const { isRunningRef } = useRobotSimulation(robotsCount)
-  const { toggleView } = useTheme()
   const [robots, setRobots] = useState([])
+  const [errorRobots, setErrorRobots] = useState([])
+  const { isRunningRef } = useRobotSimulation(robotsCount)
+  const { viewMode, toggleView } = useTheme()
   const WorkplaceCardComponent = isOldView ? WorkplaceCardOld : WorkplaceCard
   const refs = useRef({})
 
@@ -97,6 +97,7 @@ const Dashboard = () => {
 
       <ToolButtons
         isRunning={isRunning}
+        viewMode={viewMode}
         onClickChangeView={handleClickChangeView}
         onClickPauseSimulation={handleClickPauseSimulation}
         aditionalButtons={
