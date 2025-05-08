@@ -19,10 +19,12 @@ const WorkplaceCard = forwardRef((props, ref) => {
         setModalDialog
     } = props
 
+    const robotName = `Robot ${id + 1}`
+
     const { errorTitle, errorMessage } = useRobotErrorData(robotError)
 
-    const containerClass = `workplace-card-container ${error ? "red-blinking-shadow" : ""}`;
-    const headerClass = `workplace-card-header workplace-card-header${error ? "-error-bg" : "-bg"}`;
+    const containerClass = `workplace-card-container ${error ? "red-blinking-shadow" : ""}`
+    const headerClass = `workplace-card-header workplace-card-header${error ? "-error-bg" : "-bg"}`
 
     const formattedPoint = String(point).padStart(4, '0')
 
@@ -41,7 +43,7 @@ const WorkplaceCard = forwardRef((props, ref) => {
         >
             <div className="workplace-card">
                 <div className={headerClass} >
-                    <strong>Robot {id}</strong>
+                    <strong>{robotName}</strong>
                 </div>
                 <div className="workplace-card-body p-2">
                     <div className="row d-flex mb-1">
