@@ -7,7 +7,7 @@ const Navbar = ({ theme, viewMode, onToggleTheme, onToggleMenu }) => {
     return (
         <nav className="navbar navbar-expand position-fixed w-100">
             <Link
-                to={"/"}
+                to={"/dashboard"}
                 className="navbar-brand text-center text-white"
             >
                 Dashboard exmaple
