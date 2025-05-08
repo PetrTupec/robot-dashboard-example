@@ -1,9 +1,7 @@
 import "./Navbar.css"
 import { Link } from "react-router-dom"
-import { useTheme } from "../../../context/ThemeContext"
 
-const Navbar = ({ onClickToggle }) => {
-    const { theme, toggleTheme, viewMode } = useTheme();
+const Navbar = ({ theme, viewMode, onToggleTheme, onToggleMenu }) => {
     const iconClass = `text-${theme === "light" ? "warning" : "secondary"} fas fa-lightbulb`
 
     return (
@@ -15,18 +13,18 @@ const Navbar = ({ onClickToggle }) => {
                 Dashboard exmaple
             </Link>
             {viewMode === "new" &&
-            <button
-                title="Toggle theme"
-                className="btn ms-auto"
-                onClick={toggleTheme}
-            >
-                <i className={iconClass}></i>
-            </button>}
+                <button
+                    title="Toggle theme"
+                    className="btn ms-auto"
+                    onClick={onToggleTheme}
+                >
+                    <i className={iconClass}></i>
+                </button>}
             <div className="d-md-none">
                 <button
                     title="Show menu"
                     className="nav-link btn ms-2 me-4 text-secondary"
-                    onClick={onClickToggle}
+                    onClick={onToggleMenu}
                 >
                     <i className="fas fa-bars" />
                 </button>
