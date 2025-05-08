@@ -1,11 +1,6 @@
 # Robot Dashboard
 
-Aplikace zobrazuje aktuální stav robotů, včetně informací o:
- - pracovním režimu (online, běží, zastaven, chyba).
- - Názvu aktuálně spuštěného programu.
- - Čísla řádku v programu.
- 
-Je určena pro pracovníky, kteří mají za úkol zajistit plynulost výroby a řešit vzniklé problémy.
+Aplikace zobrazuje aktuální stav robotů a je určena pro pracovníky, kteří mají za úkol zajistit plynulost výroby a řešit vzniklé problémy.
 
 ## Motivace
 
@@ -14,7 +9,7 @@ Cílem projektu bylo navrhnout efektivnější způsob diagnostiky chyb robotů.
 V původní aplikaci byla chyba signalizována rozsvícením červené diody.
 Pro identifikaci chyby bylo zapotřebí zajít k ovládacímu panelu robota kde byl kód chyby a popis. Pro příčinu poruchy a návrh řešení bylo nutné listovat v manuálu.
 
-Na základě analýzy API jsem zjistil, že roboti poskytují dostatek dat pro identifikaci chyby na dálku. V kombinaci s databází chyb a jejich detaily lze potřebné informace zobrazit přímo v dashboardu.
+Na základě analýzy API bylo zjištěno, že roboti poskytují dostatek dat pro identifikaci chyby na dálku. V kombinaci s databází chyb a jejich detaily lze potřebné informace zobrazit přímo v dashboardu.
 
 **Cílem bylo implementovat následující rozšíření:**
 - světlý/tmavý režim
@@ -34,14 +29,14 @@ Na základě analýzy API jsem zjistil, že roboti poskytují dostatek dat pro i
 
 ## Popis layoutu
 
-Vrchní lišta
+**Vrchní lišta**
  - název aplikace
  - přepínání světlého a tmavého režimu
 
-Postranní panel
+**Postranní panel**
  - navigace v aplikaci
 
-Hlavička stránky
+**Hlavička stránky**
  - název stránky
  - ovládací tlačítka (zleva)
     1. přepínání mezi novým a starým zobrazením
@@ -56,10 +51,10 @@ Hlavička stránky
         - při kliknutí na toto tlačítko se zobrazení posouvá mezi roboty s chybou
         - užitečné na menších obrazovkách nebo při větším počtu robotů
 
-Ukazatel stavu serveru
+**Ukazatel stavu serveru**
  - mění barvu diody podle toho, zda ze serveru přicházejí data
 
-Karta robota
+**Karta robota**
  - název robota
  - připojení online/offline
  - barevné diody zobrazující stav
@@ -68,9 +63,10 @@ Karta robota
  - aktuální řádek v programu
  - pokud nastane chyba, zobrazí se spodní část karty s kódem chyby, zprávou a tlačítkem s otazníkem pro zobrazení detailu
 
-Patička
+**Patička**
  - přihlášený uživatel
  - autor aplikace
+ - O projektu
 
 ## Použité technologie
 
